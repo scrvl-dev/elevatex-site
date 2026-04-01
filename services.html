@@ -381,55 +381,21 @@ footer a:hover{color:var(--accent);}
       <h2>Free 30 Minute Strategy Session</h2>
       <p>Pick a time that works. We will audit your marketing, find the gaps, and map out a custom growth plan for your business.</p>
     </div>
-    <div class="cal-embed" id="cal-embed">
-      <!-- ═══════════════════════════════════════════
-           CAL.COM EMBED INSTRUCTIONS:
-           
-           1. Go to Cal.com > Event Types > Your Event
-           2. Click "Embed" > "Inline Embed"
-           3. Copy the embed code
-           4. Paste it below, replacing the placeholder
-           
-           The embed script below uses Cal.com's 
-           official embed. Replace YOUR_CAL_USERNAME
-           and YOUR_EVENT_SLUG with your details.
-           ═══════════════════════════════════════════ -->
+    <div class="cal-embed">
+      <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-free-strategy-call"></div>
+      <script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "free-strategy-call", {origin:"https://app.cal.com"});
+        Cal.ns["free-strategy-call"]("inline", {
+          elementOrSelector:"#my-cal-inline-free-strategy-call",
+          config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+          calLink: "elavatewithalex/free-strategy-call",
+        });
+        Cal.ns["free-strategy-call"]("ui", {"theme":"dark","hideEventTypeDetails":false,"layout":"month_view"});
+      </script>
     </div>
   </div>
 </section>
-
-<!-- Cal.com Embed Script -->
-<script>
-(function() {
-  // ══════════════════════════════════════════════
-  // CONFIGURE THESE TWO VALUES:
-  var CAL_USERNAME = "elavatewithalex";
-  var EVENT_SLUG = "free-strategy-call";
-  // ══════════════════════════════════════════════
-  
-  var script = document.createElement('script');
-  script.src = 'https://app.cal.com/embed/embed.js';
-  script.async = true;
-  script.onload = function() {
-    Cal("init", {origin:"https://cal.com"});
-    Cal("inline", {
-      elementOrSelector: "#cal-embed",
-      calLink: CAL_USERNAME + "/" + EVENT_SLUG,
-      layout: "month_view",
-      config: {
-        theme: "dark"
-      }
-    });
-    Cal("ui", {
-      theme: "dark",
-      styles: { branding: { brandColor: "#c8ff00" } },
-      hideEventTypeDetails: false,
-      layout: "month_view"
-    });
-  };
-  document.head.appendChild(script);
-})();
-</script>
 
 <!-- FAQ -->
 <section class="faq">
