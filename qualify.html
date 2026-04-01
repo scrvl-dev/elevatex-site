@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElevateX | Pre-Call Questionnaire</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06060a;
+  --surface: #0e0e13;
+  --surface-2: #161619;
+  --border: #252530;
+  --text: #e2e0dc;
+  --text-muted: #79797f;
+  --text-dim: #55555c;
+  --accent: #c8ff00;
+  --accent-soft: rgba(200,255,0,0.08);
+  --accent-mid: rgba(200,255,0,0.15);
+  --accent-glow: rgba(200,255,0,0.25);
+  --white: #fff;
+  --error: #ff4d4d;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+
+.form-wrapper{width:100%;max-width:640px;padding:2rem;position:relative;}
+
+/* HEADER */
+.form-header{text-align:center;margin-bottom:3rem;}
+.form-logo{font-family:'Instrument Serif',serif;font-size:1.4rem;color:var(--white);margin-bottom:1.5rem;}
+.form-logo span{color:var(--accent);}
+.form-header h1{font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--white);letter-spacing:-0.02em;line-height:1.15;margin-bottom:0.6rem;}
+.form-header p{color:var(--text-muted);font-size:0.88rem;line-height:1.6;max-width:420px;margin:0 auto;}
+
+/* PROGRESS */
+.progress-bar{width:100%;height:3px;background:var(--border);border-radius:10px;margin-bottom:2.5rem;overflow:hidden;}
+.progress-fill{height:100%;background:var(--accent);border-radius:10px;transition:width 0.5s cubic-bezier(0.4,0,0.2,1);}
+.progress-text{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--text-dim);text-align:right;margin-bottom:0.5rem;letter-spacing:0.04em;}
+
+/* STEPS */
+.step{display:none;animation:stepIn 0.4s ease both;}
+.step.active{display:block;}
+@keyframes stepIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+.step-question{font-size:1.15rem;color:var(--white);font-weight:600;margin-bottom:0.4rem;line-height:1.4;}
+.step-hint{font-size:0.82rem;color:var(--text-muted);margin-bottom:1.75rem;line-height:1.5;}
+
+/* OPTION CARDS (single/multi select) */
+.options{display:flex;flex-direction:column;gap:0.6rem;}
+.option{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:0.75rem;position:relative;}
+.option:hover{border-color:var(--accent-mid);background:var(--surface-2);}
+.option.selected{border-color:var(--accent);background:rgba(200,255,0,0.04);}
+.option-radio{width:20px;height:20px;min-width:20px;border:2px solid var(--border);border-radius:50%;transition:all 0.25s;display:flex;align-items:center;justify-content:center;}
+.option.selected .option-radio{border-color:var(--accent);}
+.option.selected .option-radio::after{content:'';width:10px;height:10px;background:var(--accent);border-radius:50%;}
+.option-checkbox{width:20px;height:20px;min-width:20px;border:2px solid var(--border);border-radius:5px;transition:all 0.25s;display:flex;align-items:center;justify-content:center;}
+.option.selected .option-checkbox{border-color:var(--accent);background:var(--accent);}
+.option.selected .option-checkbox::after{content:'✓';color:var(--bg);font-size:0.7rem;font-weight:700;}
+.option-text{font-size:0.9rem;color:var(--text);}
+.option-desc{font-size:0.75rem;color:var(--text-muted);margin-top:0.15rem;}
+
+/* TEXT INPUTS */
+.input-group{margin-bottom:1.25rem;}
+.input-label{font-size:0.82rem;color:var(--text-muted);margin-bottom:0.4rem;display:block;}
+.text-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.85rem 1rem;color:var(--text);font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.3s;}
+.text-input:focus{border-color:var(--accent);}
+.text-input::placeholder{color:var(--text-dim);}
+textarea.text-input{min-height:100px;resize:vertical;}
+
+/* SCALE */
+.scale-row{display:flex;gap:0.5rem;margin-top:0.5rem;}
+.scale-option{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.75rem 0.5rem;text-align:center;cursor:pointer;transition:all 0.25s;}
+.scale-option:hover{border-color:var(--accent-mid);}
+.scale-option.selected{border-color:var(--accent);background:rgba(200,255,0,0.06);}
+.scale-num{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--white);font-weight:500;}
+.scale-labels{display:flex;justify-content:space-between;margin-top:0.4rem;}
+.scale-labels span{font-size:0.68rem;color:var(--text-dim);}
+
+/* NAVIGATION */
+.step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);}
+.btn-next{background:var(--accent);color:var(--bg);padding:0.8rem 2rem;border:none;border-radius:8px;font-size:0.88rem;font-weight:700;cursor:pointer;transition:transform 0.2s,box-shadow 0.3s,opacity 0.3s;display:flex;align-items:center;gap:0.4rem;font-family:'DM Sans',sans-serif;}
+.btn-next:hover{transform:translateY(-1px);box-shadow:0 6px 24px var(--accent-glow);}
+.btn-next:disabled{opacity:0.3;cursor:not-allowed;transform:none;box-shadow:none;}
+.btn-back{background:none;border:none;color:var(--text-muted);font-size:0.85rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:color 0.3s;padding:0.5rem 0;}
+.btn-back:hover{color:var(--accent);}
+
+/* KEY SHORTCUT HINTS */
+.key-hint{font-size:0.7rem;color:var(--text-dim);margin-top:0.75rem;}
+.key-hint kbd{background:var(--surface);border:1px solid var(--border);padding:0.15rem 0.4rem;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:0.65rem;}
+
+/* SUCCESS */
+.success-screen{text-align:center;padding:3rem 0;}
+.success-icon{font-size:3rem;margin-bottom:1.5rem;animation:popIn 0.5s ease both;}
+@keyframes popIn{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
+.success-screen h2{font-family:'Instrument Serif',serif;font-size:1.8rem;color:var(--white);margin-bottom:0.75rem;}
+.success-screen p{color:var(--text-muted);font-size:0.9rem;line-height:1.6;max-width:400px;margin:0 auto 2rem;}
+.success-link{color:var(--accent);text-decoration:none;font-weight:600;font-size:0.9rem;}
+.success-link:hover{text-decoration:underline;}
+
+/* ERROR */
+.error-msg{color:var(--error);font-size:0.78rem;margin-top:0.5rem;display:none;}
+.error-msg.show{display:block;}
+
+@media(max-width:640px){
+  .form-wrapper{padding:1.25rem;}
+  .scale-row{gap:0.35rem;}
+  .scale-option{padding:0.6rem 0.25rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="form-wrapper">
+
+  <div class="form-header">
+    <div class="form-logo">Elevate<span>X</span></div>
+    <h1>Help us prepare for your strategy call</h1>
+    <p>Takes 2 minutes. Your answers help us audit your marketing before we meet so we can spend the call on solutions, not questions.</p>
+  </div>
+
+  <div class="progress-text">Step <span id="step-current">1</span> of <span id="step-total">8</span></div>
+  <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+
+  <!-- ═══ STEP 1: BUSINESS INFO ═══ -->
+  <div class="step active" data-step="1">
+    <div class="step-question">Let's start with the basics</div>
+    <div class="step-hint">Tell us about your business so we can tailor the call to you.</div>
+    <div class="input-group">
+      <label class="input-label">Your full name</label>
+      <input type="text" class="text-input" id="f-name" placeholder="e.g. Sarah Johnson" required>
+    </div>
+    <div class="input-group">
+      <label class="input-label">Business name</label>
+      <input type="text" class="text-input" id="f-business" placeholder="e.g. Bright Smile Dental">
+    </div>
+    <div class="input-group">
+      <label class="input-label">Website URL (if you have one)</label>
+      <input type="text" class="text-input" id="f-website" placeholder="e.g. www.yoursite.co.uk">
+    </div>
+    <div class="step-nav">
+      <div></div>
+      <button class="btn-next" onclick="nextStep()">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 2: INDUSTRY ═══ -->
+  <div class="step" data-step="2">
+    <div class="step-question">What type of service business do you run?</div>
+    <div class="step-hint">Select the closest match. This helps us prepare relevant examples.</div>
+    <div class="options" data-type="single" data-field="industry">
+      <div class="option" data-value="Dental / Medical"><div class="option-radio"></div><div><div class="option-text">🦷 Dental or Medical Practice</div></div></div>
+      <div class="option" data-value="Aesthetics / Beauty"><div class="option-radio"></div><div><div class="option-text">💉 Aesthetics, Beauty, or Wellness</div></div></div>
+      <div class="option" data-value="Property / Estate Agent"><div class="option-radio"></div><div><div class="option-text">🏠 Property or Estate Agency</div></div></div>
+      <div class="option" data-value="Trades / Home Services"><div class="option-radio"></div><div><div class="option-text">🔧 Trades or Home Services</div></div></div>
+      <div class="option" data-value="Coaching / Consulting"><div class="option-radio"></div><div><div class="option-text">📋 Coaching or Consulting</div></div></div>
+      <div class="option" data-value="Recruitment"><div class="option-radio"></div><div><div class="option-text">👥 Recruitment or Staffing</div></div></div>
+      <div class="option" data-value="Fitness / Gym"><div class="option-radio"></div><div><div class="option-text">🏋️ Fitness, Gym, or Personal Training</div></div></div>
+      <div class="option" data-value="Other"><div class="option-radio"></div><div><div class="option-text">📦 Other service business</div></div></div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next" onclick="nextStep()">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 3: REVENUE ═══ -->
+  <div class="step" data-step="3">
+    <div class="step-question">What is your current monthly revenue?</div>
+    <div class="step-hint">No judgement here. This helps us recommend the right strategy and budget.</div>
+    <div class="options" data-type="single" data-field="revenue">
+      <div class="option" data-value="Under £5k"><div class="option-radio"></div><div><div class="option-text">Under £5,000 per month</div><div class="option-desc">Just getting started or early stage</div></div></div>
+      <div class="option" data-value="£5k-£20k"><div class="option-radio"></div><div><div class="option-text">£5,000 to £20,000 per month</div><div class="option-desc">Established, looking to grow</div></div></div>
+      <div class="option" data-value="£20k-£50k"><div class="option-radio"></div><div><div class="option-text">£20,000 to £50,000 per month</div><div class="option-desc">Scaling and need systems</div></div></div>
+      <div class="option" data-value="£50k-£100k"><div class="option-radio"></div><div><div class="option-text">£50,000 to £100,000 per month</div><div class="option-desc">Ready to go to the next level</div></div></div>
+      <div class="option" data-value="£100k+"><div class="option-radio"></div><div><div class="option-text">£100,000+ per month</div><div class="option-desc">Need infrastructure and efficiency</div></div></div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next" onclick="nextStep()">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 4: CURRENT MARKETING ═══ -->
+  <div class="step" data-step="4">
+    <div class="step-question">What marketing are you currently doing?</div>
+    <div class="step-hint">Select all that apply. It is okay if the answer is "nothing" right now.</div>
+    <div class="options" data-type="multi" data-field="current_marketing">
+      <div class="option" data-value="Facebook/Instagram Ads"><div class="option-checkbox"></div><div><div class="option-text">Facebook or Instagram Ads</div></div></div>
+      <div class="option" data-value="Google Ads"><div class="option-checkbox"></div><div><div class="option-text">Google Ads (Search or Display)</div></div></div>
+      <div class="option" data-value="Social Media Posts"><div class="option-checkbox"></div><div><div class="option-text">Organic social media posting</div></div></div>
+      <div class="option" data-value="Email Marketing"><div class="option-checkbox"></div><div><div class="option-text">Email marketing or newsletters</div></div></div>
+      <div class="option" data-value="SEO"><div class="option-checkbox"></div><div><div class="option-text">SEO or content marketing</div></div></div>
+      <div class="option" data-value="Referrals/Word of Mouth"><div class="option-checkbox"></div><div><div class="option-text">Referrals and word of mouth only</div></div></div>
+      <div class="option" data-value="Nothing Currently"><div class="option-checkbox"></div><div><div class="option-text">Nothing right now</div></div></div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next" onclick="nextStep()">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 5: BIGGEST CHALLENGE ═══ -->
+  <div class="step" data-step="5">
+    <div class="step-question">What is your single biggest marketing challenge right now?</div>
+    <div class="step-hint">Pick the one that keeps you up at night.</div>
+    <div class="options" data-type="single" data-field="biggest_challenge">
+      <div class="option" data-value="Not enough leads"><div class="option-radio"></div><div><div class="option-text">Not enough leads or enquiries coming in</div></div></div>
+      <div class="option" data-value="Leads not converting"><div class="option-radio"></div><div><div class="option-text">Getting leads but they do not convert to paying clients</div></div></div>
+      <div class="option" data-value="No time for marketing"><div class="option-radio"></div><div><div class="option-text">No time to do marketing properly</div></div></div>
+      <div class="option" data-value="Wasting money on ads"><div class="option-radio"></div><div><div class="option-text">Spending money on ads with poor or no results</div></div></div>
+      <div class="option" data-value="No systems or automation"><div class="option-radio"></div><div><div class="option-text">No systems, everything is manual</div></div></div>
+      <div class="option" data-value="Do not know where to start"><div class="option-radio"></div><div><div class="option-text">Honestly, I do not know where to start</div></div></div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next" onclick="nextStep()">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 6: TOOLS ═══ -->
+  <div class="step" data-step="6">
+    <div class="step-question">What tools or platforms are you currently using?</div>
+    <div class="step-hint">Select all that apply. This tells us what we are working with.</div>
+    <div class="options" data-type="multi" data-field="current_tools">
+      <div class="option" data-value="Mailchimp/Brevo"><div class="option-checkbox"></div><div><div class="option-text">Mailchimp, Brevo, or similar email tool</div></div></div>
+      <div class="option" data-value="HubSpot/CRM"><div class="option-checkbox"></div><div><div class="option-text">HubSpot, Salesforce, or a CRM</div></div></div>
+      <div class="option" data-value="WordPress/Wix/Squarespace"><div class="option-checkbox"></div><div><div class="option-text">WordPress, Wix, or Squarespace</div></div></div>
+      <div class="option" data-value="Calendly/Cal"><div class="option-checkbox"></div><div><div class="option-text">Calendly, Cal.com, or booking software</div></div></div>
+      <div class="option" data-value="WhatsApp/Messenger"><div class="option-checkbox"></div><div><div class="option-text">WhatsApp or Facebook Messenger for leads</div></div></div>
+      <div class="option" data-value="Spreadsheets"><div class="option-checkbox"></div><div><div class="option-text">Spreadsheets and manual tracking</div></div></div>
+      <div class="option" data-value="Nothing"><div class="option-checkbox"></div><div><div class="option-text">Nothing, just my phone and memory</div></div></div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next" onclick="nextStep()">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 7: BUDGET + URGENCY ═══ -->
+  <div class="step" data-step="7">
+    <div class="step-question">What monthly budget are you comfortable investing in marketing?</div>
+    <div class="step-hint">This includes ad spend and management. Be honest, there is no wrong answer.</div>
+    <div class="options" data-type="single" data-field="budget">
+      <div class="option" data-value="Under £1,000"><div class="option-radio"></div><div><div class="option-text">Under £1,000 per month</div></div></div>
+      <div class="option" data-value="£1,000-£2,500"><div class="option-radio"></div><div><div class="option-text">£1,000 to £2,500 per month</div></div></div>
+      <div class="option" data-value="£2,500-£5,000"><div class="option-radio"></div><div><div class="option-text">£2,500 to £5,000 per month</div></div></div>
+      <div class="option" data-value="£5,000+"><div class="option-radio"></div><div><div class="option-text">£5,000+ per month</div></div></div>
+      <div class="option" data-value="Not sure yet"><div class="option-radio"></div><div><div class="option-text">Not sure yet, need guidance</div></div></div>
+    </div>
+
+    <div style="margin-top:2rem;">
+      <div class="step-question" style="font-size:1rem;">How urgent is this for you?</div>
+      <div class="step-hint">1 = no rush, 5 = need to start yesterday</div>
+      <div class="scale-row" data-field="urgency">
+        <div class="scale-option" data-value="1" onclick="selectScale(this)"><div class="scale-num">1</div></div>
+        <div class="scale-option" data-value="2" onclick="selectScale(this)"><div class="scale-num">2</div></div>
+        <div class="scale-option" data-value="3" onclick="selectScale(this)"><div class="scale-num">3</div></div>
+        <div class="scale-option" data-value="4" onclick="selectScale(this)"><div class="scale-num">4</div></div>
+        <div class="scale-option" data-value="5" onclick="selectScale(this)"><div class="scale-num">5</div></div>
+      </div>
+      <div class="scale-labels"><span>No rush</span><span>ASAP</span></div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next" onclick="nextStep()">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 8: FINAL ═══ -->
+  <div class="step" data-step="8">
+    <div class="step-question">Anything else you want us to know before the call?</div>
+    <div class="step-hint">Previous agency experience, specific goals, questions you want answered. Whatever is on your mind.</div>
+    <div class="input-group">
+      <textarea class="text-input" id="f-notes" placeholder="e.g. We tried Facebook ads before but they did not work. We want to get to 50 new clients per month. We are launching a new service in Q3..."></textarea>
+    </div>
+    <div class="input-group">
+      <label class="input-label">Best email to send your pre-call audit to</label>
+      <input type="email" class="text-input" id="f-email" placeholder="you@yourbusiness.co.uk" required>
+    </div>
+    <div class="input-group">
+      <label class="input-label">Phone number (for booking confirmation)</label>
+      <input type="tel" class="text-input" id="f-phone" placeholder="+44 7XXX XXXXXX">
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next" id="submit-btn" onclick="submitForm()">Submit + Get Your Audit →</button>
+    </div>
+  </div>
+
+  <!-- ═══ SUCCESS ═══ -->
+  <div class="step" data-step="success" id="success-screen">
+    <div class="success-screen">
+      <div class="success-icon">✅</div>
+      <h2>You are all set.</h2>
+      <p>Thanks for taking the time to fill this in. We are already looking at your business and will come prepared with a custom audit and growth plan for your call.</p>
+      <p style="color:var(--text-muted);font-size:0.82rem;">Check your email for the calendar confirmation and a reminder 24 hours before.</p>
+      <a href="/" class="success-link" style="margin-top:1rem;display:inline-block;">← Back to ElevateX</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ══════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════
+let currentStep = 1;
+const totalSteps = 8;
+const formData = {};
+
+// ══════════════════════════════════════════════════
+// GHL WEBHOOK URL — REPLACE THIS:
+// Go to GHL > Automation > Webhooks > Create Webhook
+// Or use: Settings > Integrations > Webhooks
+// ══════════════════════════════════════════════════
+const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/YOUR_WEBHOOK_ID";
+
+// ══════════════════════════════════════════════════
+// OPTION CLICK HANDLERS
+// ══════════════════════════════════════════════════
+document.querySelectorAll('.options').forEach(group => {
+  const type = group.dataset.type;
+  group.querySelectorAll('.option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      if (type === 'single') {
+        group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        opt.classList.toggle('selected');
+      } else {
+        opt.classList.toggle('selected');
+      }
+    });
+  });
+});
+
+function selectScale(el) {
+  el.parentElement.querySelectorAll('.scale-option').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ══════════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════════
+function collectStepData() {
+  const stepEl = document.querySelector(`.step[data-step="${currentStep}"]`);
+  
+  // Text inputs
+  stepEl.querySelectorAll('.text-input').forEach(input => {
+    if (input.id && input.value.trim()) {
+      formData[input.id.replace('f-','')] = input.value.trim();
+    }
+  });
+  
+  // Option selections
+  stepEl.querySelectorAll('.options').forEach(group => {
+    const field = group.dataset.field;
+    const type = group.dataset.type;
+    const selected = group.querySelectorAll('.option.selected');
+    if (type === 'single' && selected.length) {
+      formData[field] = selected[0].dataset.value;
+    } else if (type === 'multi') {
+      formData[field] = Array.from(selected).map(s => s.dataset.value);
+    }
+  });
+  
+  // Scale
+  stepEl.querySelectorAll('.scale-row').forEach(scale => {
+    const field = scale.dataset.field;
+    const selected = scale.querySelector('.scale-option.selected');
+    if (selected) formData[field] = selected.dataset.value;
+  });
+}
+
+function nextStep() {
+  collectStepData();
+  
+  // Validate step 1
+  if (currentStep === 1) {
+    const name = document.getElementById('f-name').value.trim();
+    if (!name) { document.getElementById('f-name').style.borderColor = 'var(--error)'; return; }
+  }
+  
+  // Validate step 8
+  if (currentStep === 8) { submitForm(); return; }
+  
+  if (currentStep < totalSteps) {
+    document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
+    currentStep++;
+    document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
+    updateProgress();
+  }
+}
+
+function prevStep() {
+  if (currentStep > 1) {
+    document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
+    currentStep--;
+    document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
+    updateProgress();
+  }
+}
+
+function updateProgress() {
+  const pct = (currentStep / totalSteps) * 100;
+  document.getElementById('progress').style.width = pct + '%';
+  document.getElementById('step-current').textContent = currentStep;
+}
+
+// ══════════════════════════════════════════════════
+// SUBMIT TO GHL WEBHOOK
+// ══════════════════════════════════════════════════
+async function submitForm() {
+  collectStepData();
+  
+  const email = document.getElementById('f-email').value.trim();
+  if (!email) { document.getElementById('f-email').style.borderColor = 'var(--error)'; return; }
+  
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+  
+  // Format data for GHL
+  const payload = {
+    // GHL standard contact fields
+    firstName: (formData.name || '').split(' ')[0],
+    lastName: (formData.name || '').split(' ').slice(1).join(' '),
+    email: formData.email || '',
+    phone: formData.phone || '',
+    companyName: formData.business || '',
+    website: formData.website || '',
+    
+    // Custom fields (map these in GHL > Settings > Custom Fields)
+    customField: {
+      industry: formData.industry || '',
+      monthly_revenue: formData.revenue || '',
+      current_marketing: Array.isArray(formData.current_marketing) ? formData.current_marketing.join(', ') : (formData.current_marketing || ''),
+      biggest_challenge: formData.biggest_challenge || '',
+      current_tools: Array.isArray(formData.current_tools) ? formData.current_tools.join(', ') : (formData.current_tools || ''),
+      marketing_budget: formData.budget || '',
+      urgency_level: formData.urgency || '',
+      additional_notes: formData.notes || ''
+    },
+    
+    // Tags for pipeline automation
+    tags: ['pre-call-form', 'website-lead', formData.industry || 'unknown-industry'],
+    
+    // Source tracking
+    source: 'ElevateX Pre-Call Form'
+  };
+  
+  try {
+    await fetch(GHL_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch(e) {
+    console.log('Webhook sent (or queued):', e);
+  }
+  
+  // Show success regardless (webhook may be cross-origin blocked but still received)
+  document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
+  document.getElementById('success-screen').classList.add('active');
+  document.getElementById('progress').style.width = '100%';
+  document.getElementById('step-current').textContent = '✓';
+}
+
+// ══════════════════════════════════════════════════
+// KEYBOARD NAVIGATION
+// ══════════════════════════════════════════════════
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    const active = document.querySelector('.step.active');
+    if (active && !active.querySelector('textarea:focus')) {
+      e.preventDefault();
+      nextStep();
+    }
+  }
+});
+</script>
+
+</body>
+</html>

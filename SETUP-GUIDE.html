@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElevateX Deployment Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06060a;--surface:#0e0e13;--surface-2:#161619;--border:#252530;--text:#e2e0dc;--text-muted:#79797f;--text-dim:#55555c;--accent:#c8ff00;--accent-soft:rgba(200,255,0,0.08);--accent-mid:rgba(200,255,0,0.15);--white:#fff;--blue:#4d9fff;--green:#4dff88;--orange:#ffaa4d;--red:#ff4d4d;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;padding:2rem;max-width:900px;margin:0 auto;}
+h1{font-family:'Instrument Serif',serif;font-size:2.4rem;color:var(--white);letter-spacing:-0.03em;margin-bottom:0.5rem;}
+h1 em{color:var(--accent);font-style:italic;}
+.subtitle{color:var(--text-muted);font-size:0.95rem;margin-bottom:3rem;line-height:1.6;}
+h2{font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--white);margin:3rem 0 1rem;padding-top:2rem;border-top:1px solid var(--border);}
+h2:first-of-type{border-top:none;padding-top:0;margin-top:2rem;}
+h3{font-size:1rem;color:var(--white);margin:1.5rem 0 0.5rem;}
+p{color:var(--text-muted);font-size:0.88rem;line-height:1.7;margin-bottom:0.75rem;}
+code{font-family:'JetBrains Mono',monospace;background:var(--surface);border:1px solid var(--border);padding:0.15rem 0.4rem;border-radius:3px;font-size:0.78rem;color:var(--accent);}
+pre{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin:1rem 0;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.7;color:var(--text);}
+.label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:0.75rem;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1rem 0;}
+.card h4{color:var(--white);font-size:0.92rem;margin-bottom:0.4rem;}
+.card p{margin-bottom:0.25rem;}
+.step-box{display:grid;grid-template-columns:36px 1fr;gap:1rem;margin:1rem 0;align-items:start;}
+.step-num{width:36px;height:36px;background:var(--accent-soft);border:1px solid var(--accent-mid);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--accent);font-weight:500;}
+.warn{background:rgba(255,170,77,0.06);border:1px solid rgba(255,170,77,0.2);border-radius:8px;padding:1rem 1.25rem;margin:1rem 0;}
+.warn p{color:var(--orange);margin:0;}
+.success{background:rgba(77,255,136,0.06);border:1px solid rgba(77,255,136,0.2);border-radius:8px;padding:1rem 1.25rem;margin:1rem 0;}
+.success p{color:var(--green);margin:0;}
+.file-tree{font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:2;color:var(--text-muted);padding-left:0.5rem;}
+.file-tree .folder{color:var(--blue);}
+.file-tree .file{color:var(--text);}
+.file-tree .desc{color:var(--text-dim);font-size:0.7rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:640px){.grid-2{grid-template-columns:1fr;}}
+.tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.06em;padding:0.25rem 0.5rem;border-radius:3px;margin-right:0.4rem;}
+.tag-free{color:var(--green);border:1px solid rgba(77,255,136,0.3);background:rgba(77,255,136,0.06);}
+.tag-paid{color:var(--orange);border:1px solid rgba(255,170,77,0.3);background:rgba(255,170,77,0.06);}
+.tag-required{color:var(--red);border:1px solid rgba(255,77,77,0.3);background:rgba(255,77,77,0.06);}
+</style>
+</head>
+<body>
+
+<div class="label">// Deployment Guide</div>
+<h1>ElevateX <em>Setup Playbook</em></h1>
+<p class="subtitle">Everything you need to go live. Hosting, domain, Cal.com, GHL automations, Meta Pixel, and the pre-call form. Follow this start to finish.</p>
+
+<!-- ═══════════════════════════════════ -->
+<h2>1. Your Project Structure</h2>
+
+<div class="file-tree">
+<span class="folder">elevatex-site/</span><br>
+├── <span class="file">vercel.json</span> <span class="desc">— URL routing config</span><br>
+├── <span class="folder">pages/</span><br>
+│&nbsp;&nbsp; ├── <span class="file">home.html</span> <span class="desc">— Main website (elevatexsolutions.co.uk)</span><br>
+│&nbsp;&nbsp; ├── <span class="file">dfy.html</span> <span class="desc">— DFY landing page (/services)</span><br>
+│&nbsp;&nbsp; └── <span class="file">qualify.html</span> <span class="desc">— Pre-call form (/qualify)</span><br>
+</div>
+
+<div class="card">
+  <h4>Your live URLs will be:</h4>
+  <p><code>elevatexsolutions.co.uk</code> → Main site (home.html)</p>
+  <p><code>elevatexsolutions.co.uk/services</code> → DFY landing page for ads</p>
+  <p><code>elevatexsolutions.co.uk/qualify</code> → Pre-call qualification form</p>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<h2>2. Buy Your Domain</h2>
+
+<div class="grid-2">
+  <div class="card">
+    <h4>Recommended: Namecheap</h4>
+    <p><span class="tag tag-paid">~£8/year</span></p>
+    <p>Search for <code>elevatexsolutions.co.uk</code> on <a href="https://www.namecheap.com" target="_blank">namecheap.com</a>. If taken, try <code>elevatex.co.uk</code> or <code>elevatex.uk</code>.</p>
+  </div>
+  <div class="card">
+    <h4>Alternative: Cloudflare Registrar</h4>
+    <p><span class="tag tag-paid">~£7/year</span></p>
+    <p>At-cost pricing, no markup. Also gives you free DDoS protection and CDN.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<h2>3. Deploy to Vercel (Free)</h2>
+
+<div class="step-box">
+  <div class="step-num">1</div>
+  <div>
+    <h3>Create a GitHub account (if you do not have one)</h3>
+    <p>Go to <a href="https://github.com" target="_blank">github.com</a> and sign up. Free.</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">2</div>
+  <div>
+    <h3>Create a new repository</h3>
+    <p>Click "New Repository" > Name it <code>elevatex-site</code> > Make it Private > Create.</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">3</div>
+  <div>
+    <h3>Upload your files</h3>
+    <p>Click "Upload files" and drag in the entire <code>elevatex-site</code> folder contents (vercel.json + pages folder). Commit the changes.</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">4</div>
+  <div>
+    <h3>Connect to Vercel</h3>
+    <p>Go to <a href="https://vercel.com" target="_blank">vercel.com</a> > Sign up with GitHub > "Import Project" > Select your <code>elevatex-site</code> repo > Click Deploy. It will be live in under 60 seconds at a <code>*.vercel.app</code> URL.</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">5</div>
+  <div>
+    <h3>Add your custom domain</h3>
+    <p>In Vercel dashboard > Your project > Settings > Domains > Add <code>elevatexsolutions.co.uk</code>. Vercel gives you DNS records to add at your domain registrar. Copy the CNAME or A record values and add them in Namecheap DNS settings. SSL is automatic and free.</p>
+  </div>
+</div>
+
+<div class="success">
+  <p><strong>Making changes:</strong> Edit any HTML file on GitHub (click the file > pencil icon > edit > commit). Vercel auto-deploys within seconds. Or clone the repo locally, edit in VS Code, and push. Every push = automatic deployment.</p>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<h2>4. Set Up Cal.com</h2>
+
+<div class="step-box">
+  <div class="step-num">1</div>
+  <div>
+    <h3>Create your event type</h3>
+    <p>Go to <a href="https://cal.com" target="_blank">cal.com</a> > Event Types > New > Name it "Free Strategy Call" > Set duration to 30 minutes > Add your availability (e.g. Mon to Fri, 9am to 5pm UK time).</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">2</div>
+  <div>
+    <h3>Configure booking questions</h3>
+    <p>In the event type, add required fields: Name, Email, Phone Number. Add an optional field: "Company Name". These are collected at booking time before they reach the pre-call form.</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">3</div>
+  <div>
+    <h3>Set redirect after booking</h3>
+    <p>In Event Type > Advanced > Redirect URL after booking, set it to:<br><code>https://elevatexsolutions.co.uk/qualify</code><br>This sends them straight to your pre-call form after they book.</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">4</div>
+  <div>
+    <h3>Update the landing page code</h3>
+    <p>In <code>pages/dfy.html</code>, find the Cal.com embed script near the bottom and replace:</p>
+    <pre>var CAL_USERNAME = "YOUR_CAL_USERNAME";   // your cal.com username
+var EVENT_SLUG = "strategy-call";         // your event type slug</pre>
+    <p>Your event slug is the URL path shown in Cal.com, e.g. if your booking link is <code>cal.com/alex-elevatex/strategy-call</code> then username is <code>alex-elevatex</code> and slug is <code>strategy-call</code>.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<h2>5. Connect Cal.com to GHL</h2>
+
+<p>This is how booking data flows into your GHL pipeline automatically.</p>
+
+<div class="step-box">
+  <div class="step-num">1</div>
+  <div>
+    <h3>Create GHL webhook</h3>
+    <p>In GHL > Automation > Workflows > Create Workflow > Add Trigger > Select "Inbound Webhook". Copy the webhook URL it generates (looks like <code>https://services.leadconnectorhq.com/hooks/abc123...</code>).</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">2</div>
+  <div>
+    <h3>Add webhook to Cal.com</h3>
+    <p>In Cal.com > Settings > Developer > Webhooks > Add > Paste your GHL webhook URL > Select trigger: "Booking Created" > Save.</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">3</div>
+  <div>
+    <h3>Map the data in GHL</h3>
+    <p>In your GHL workflow, after the webhook trigger, add a "Create/Update Contact" action. Map the incoming fields:</p>
+    <pre>First Name  →  {{payload.responses.name.value}}
+Email       →  {{payload.responses.email.value}}
+Phone       →  {{payload.responses.phone.value}}
+Tag         →  "call-booked"
+Pipeline    →  "ElevateX Sales"
+Stage       →  "Call Booked"</pre>
+  </div>
+</div>
+
+<div class="warn">
+  <p><strong>Note:</strong> Cal.com webhook payload structure may vary. After adding the webhook, do a test booking and check the GHL workflow logs to see the exact field paths. Adjust mapping accordingly.</p>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<h2>6. Connect Pre-Call Form to GHL</h2>
+
+<div class="step-box">
+  <div class="step-num">1</div>
+  <div>
+    <h3>Create a second GHL webhook (or reuse)</h3>
+    <p>Create another inbound webhook in GHL Workflows for the form submissions. Copy the URL.</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">2</div>
+  <div>
+    <h3>Update the form code</h3>
+    <p>In <code>pages/qualify.html</code>, find this line near the bottom and paste your webhook URL:</p>
+    <pre>const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/YOUR_WEBHOOK_ID";</pre>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">3</div>
+  <div>
+    <h3>Create GHL custom fields</h3>
+    <p>In GHL > Settings > Custom Fields > Create these fields (all type "Text"):</p>
+    <pre>industry
+monthly_revenue
+current_marketing
+biggest_challenge
+current_tools
+marketing_budget
+urgency_level
+additional_notes</pre>
+    <p>In the workflow, map the incoming webhook data to these custom fields on the contact record.</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">4</div>
+  <div>
+    <h3>Build the automation workflow</h3>
+    <p>After the contact is created/updated from the form, add these actions:</p>
+    <pre>1. Add Tag: "pre-call-form-completed"
+2. Move to Pipeline Stage: "Qualified"
+3. Internal Notification to you (email/SMS) with their answers
+4. Wait 24hrs before call
+5. Send reminder SMS: "Hi {first_name}, looking forward to our call tomorrow at {booking_time}. Come ready to talk growth!"
+6. Wait until 1hr before call
+7. Send reminder SMS: "Your strategy call with Alex from ElevateX is in 1 hour. Talk soon!"</pre>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<h2>7. Meta Pixel Setup</h2>
+
+<div class="step-box">
+  <div class="step-num">1</div>
+  <div>
+    <h3>Get your Pixel code</h3>
+    <p>Meta Business Suite > Events Manager > Data Sources > Your Pixel > Settings > Copy the base pixel code.</p>
+  </div>
+</div>
+
+<div class="step-box">
+  <div class="step-num">2</div>
+  <div>
+    <h3>Add to every page</h3>
+    <p>In each HTML file, find the comment <code>&lt;!-- META PIXEL --&gt;</code> near the top and paste your pixel code there. Then add event tracking:</p>
+    <pre>// On landing page load (dfy.html):
+fbq('track', 'ViewContent', {content_name: 'DFY Landing Page'});
+
+// On Cal.com booking complete (add to Cal.com thank you redirect):
+fbq('track', 'Schedule', {content_name: 'Strategy Call Booked'});
+
+// On form submission (already in qualify.html, add before webhook call):
+fbq('track', 'Lead', {content_name: 'Pre-Call Form Completed'});</pre>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<h2>8. GHL Pipeline Setup</h2>
+
+<div class="card">
+  <h4>Create pipeline: "ElevateX Sales"</h4>
+  <p>Go to GHL > Opportunities > Pipelines > Create Pipeline with these stages:</p>
+  <pre>1. New Lead          (Meta ad click, no action yet)
+2. Call Booked       (Cal.com booking confirmed)
+3. Qualified         (Pre-call form completed)
+4. Call Completed    (Manual move after call)
+5. Proposal Sent     (Manual move after sending proposal)
+6. Negotiation       (If they need time to decide)
+7. Closed Won        (Client signed, start onboarding)
+8. Closed Lost       (Did not convert, add to nurture)</pre>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<h2>9. Full Stack Summary</h2>
+
+<div class="grid-2">
+  <div class="card">
+    <h4>Hosting</h4>
+    <p><span class="tag tag-free">Free</span> Vercel</p>
+    <p>Custom domain, auto SSL, auto deploys from GitHub.</p>
+  </div>
+  <div class="card">
+    <h4>Domain</h4>
+    <p><span class="tag tag-paid">~£8/year</span> Namecheap</p>
+    <p>elevatexsolutions.co.uk</p>
+  </div>
+  <div class="card">
+    <h4>Booking</h4>
+    <p><span class="tag tag-free">Free</span> Cal.com</p>
+    <p>Strategy call booking with webhook to GHL.</p>
+  </div>
+  <div class="card">
+    <h4>CRM + Automations</h4>
+    <p><span class="tag tag-required">Required</span> GoHighLevel</p>
+    <p>Pipeline, contact management, email/SMS, workflows.</p>
+  </div>
+  <div class="card">
+    <h4>Ads</h4>
+    <p><span class="tag tag-paid">Ad spend</span> Meta Ads</p>
+    <p>Traffic to /services landing page.</p>
+  </div>
+  <div class="card">
+    <h4>Analytics</h4>
+    <p><span class="tag tag-free">Free</span> Meta Pixel + Vercel Analytics</p>
+    <p>Conversion tracking and page performance.</p>
+  </div>
+</div>
+
+<div class="success" style="margin-top:2rem;">
+  <p><strong>Total monthly cost: £0</strong> (excluding GHL subscription and ad spend you are already planning for). Domain is ~£8 one time per year.</p>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<h2>10. How to Edit Your Pages</h2>
+
+<div class="card">
+  <h4>Quick edits (text, pricing, copy changes)</h4>
+  <p>Go to GitHub > your repo > click the file > pencil icon > edit directly in the browser > commit changes. Vercel deploys automatically in ~10 seconds.</p>
+</div>
+
+<div class="card">
+  <h4>Bigger changes (design, layout, new sections)</h4>
+  <p>Clone the repo locally with <code>git clone</code>. Open in VS Code. Make changes. Preview by opening the HTML file in your browser. Push to GitHub with <code>git push</code>. Vercel auto deploys. Or ask me to make the changes and I will give you the updated file to upload.</p>
+</div>
+
+<div class="card">
+  <h4>Adding new pages</h4>
+  <p>Create a new HTML file in the <code>pages/</code> folder. Add a route in <code>vercel.json</code>. Push to GitHub. Done.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElevateX Solutions | Marketing Automation, AI & Growth</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0b;
+  --surface: #111113;
+  --surface-2: #19191c;
+  --border: #2a2a2f;
+  --text: #e8e6e3;
+  --text-muted: #8a8a8e;
+  --accent: #c8ff00;
+  --accent-dim: #a5d600;
+  --accent-glow: rgba(200, 255, 0, 0.12);
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── NAVIGATION ── */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  background: rgba(10, 10, 11, 0.8);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.logo span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.nav-cta {
+  background: var(--accent) !important;
+  color: var(--bg) !important;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
+  transition: transform 0.2s, box-shadow 0.3s !important;
+}
+
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 24px var(--accent-glow);
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 2rem 4rem;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+  animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  width: fit-content;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-badge .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  max-width: 800px;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-top: 1.5rem;
+  font-weight: 300;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--accent-glow);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  padding: 0.9rem 2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.hero-metrics {
+  display: flex;
+  gap: 3rem;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+
+.metric h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.8rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.metric p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION BASE ── */
+section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 500px;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+/* ── SERVICES ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.service-card {
+  background: var(--surface);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: background 0.4s;
+}
+
+.service-card:hover {
+  background: var(--surface-2);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-glow);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(200, 255, 0, 0.15);
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+
+.service-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.service-tag {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(200, 255, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* ── PRICING ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.price-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.price-card:hover {
+  border-color: rgba(200, 255, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+.price-card.featured {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, rgba(200, 255, 0, 0.04) 0%, var(--surface) 100%);
+}
+
+.price-card.featured::before {
+  content: 'Most Popular';
+  position: absolute;
+  top: -12px;
+  left: 2rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+}
+
+.price-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.price-amount {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.5rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.price-amount span {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.price-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 1rem 0 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.price-features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.price-features li {
+  font-size: 0.85rem;
+  color: var(--text);
+  padding: 0.45rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.price-features li::before {
+  content: '✓';
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.price-cta {
+  width: 100%;
+  padding: 0.85rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.price-cta-primary {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+}
+
+.price-cta-primary:hover {
+  box-shadow: 0 8px 32px var(--accent-glow);
+}
+
+.price-cta-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.price-cta-secondary:hover {
+  border-color: var(--accent);
+}
+
+/* ── PROCESS ── */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.step {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+}
+
+.step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.5rem;
+  color: var(--accent);
+  opacity: 0.3;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.step h3 {
+  font-size: 1.05rem;
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ── CRM SECTION ── */
+.crm-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 3.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.crm-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.crm-feature {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.crm-feature-icon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: var(--accent-glow);
+  border: 1px solid rgba(200, 255, 0, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.crm-feature h4 {
+  font-size: 0.92rem;
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.crm-feature p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.crm-price-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.crm-price-box h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.crm-price {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  color: var(--accent);
+  margin: 1rem 0;
+}
+
+.crm-price span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.crm-price-box p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimonial {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.testimonial-stars {
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.testimonial p {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
+.testimonial-author {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.testimonial-author strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* ── CTA SECTION ── */
+.cta-section {
+  text-align: center;
+  padding: 6rem 2rem 8rem;
+  position: relative;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-section .section-title {
+  max-width: 700px;
+  margin: 0 auto 1rem;
+}
+
+.cta-section .section-desc {
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+footer p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--accent); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 1rem; }
+  .nav-links { display: none; }
+  .hero { padding: 6rem 1.25rem 3rem; }
+  .hero-metrics { flex-direction: column; gap: 1.5rem; }
+  section { padding: 4rem 1.25rem; }
+  .crm-section { grid-template-columns: 1fr; padding: 2rem; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-outline { text-align: center; justify-content: center; }
+  footer { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Elevate<span>X</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#crm">CRM</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Now taking Q2 2026 clients
+  </div>
+  <h1>We build the marketing <em>machines</em> that grow your business</h1>
+  <p class="hero-sub">Marketing automation, AI integration, and paid advertising systems. Done for you, built to scale. ElevateX Solutions is your growth team on demand.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Book a Strategy Call →</a>
+    <a href="#services" class="btn-outline">See Our Services</a>
+  </div>
+  <div class="hero-metrics">
+    <div class="metric">
+      <h3>£2.4M+</h3>
+      <p>Ad Spend Managed</p>
+    </div>
+    <div class="metric">
+      <h3>50+</h3>
+      <p>Automations Built</p>
+    </div>
+    <div class="metric">
+      <h3>4.2x</h3>
+      <p>Avg. Client ROAS</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <span class="section-label">// Services</span>
+  <h2 class="section-title">Everything you need to acquire, convert, and retain customers</h2>
+  <p class="section-desc">We do not just run ads. We build complete growth systems that work while you sleep.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <h3>Marketing Automation</h3>
+      <p>End to end automation systems using GoHighLevel, Zapier, Make, and custom workflows. Lead capture, email sequences, SMS follow ups, pipeline management, and reporting dashboards. All done for you.</p>
+      <span class="service-tag">Setup + Management</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧠</div>
+      <h3>AI Integration</h3>
+      <p>Custom AI chatbots, automated content systems, AI powered lead scoring, intelligent email copywriting, and workflow automation using Claude, ChatGPT, and custom solutions. Future proof your ops.</p>
+      <span class="service-tag">Custom Build</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <h3>Paid Advertising</h3>
+      <p>Meta Ads, Google Ads, TikTok Ads. Full funnel strategy from cold traffic to conversion. Creative strategy, audience research, campaign builds, optimisation, and weekly reporting. We manage your spend like it is our own.</p>
+      <span class="service-tag">Monthly Retainer</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔧</div>
+      <h3>Done For You Marketing</h3>
+      <p>Complete marketing department in a box. Strategy, funnels, ads, automations, CRM, email marketing, and reporting. One partner, zero headaches. Perfect for businesses scaling from £10k to £100k+ per month.</p>
+      <span class="service-tag">Full Service</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <span class="section-label">// Pricing</span>
+  <h2 class="section-title">Transparent pricing, serious results</h2>
+  <p class="section-desc">No hidden fees. No 12 month contracts. Just growth systems that pay for themselves.</p>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-label">Starter</div>
+      <div class="price-amount">£1,497<span>/mo</span></div>
+      <p class="price-desc">For businesses ready to systemise their marketing and stop leaving money on the table.</p>
+      <ul class="price-features">
+        <li>1 advertising channel (Meta or Google)</li>
+        <li>CRM setup and automation</li>
+        <li>Email sequence (up to 5 emails)</li>
+        <li>Monthly reporting dashboard</li>
+        <li>Bi-weekly strategy calls</li>
+      </ul>
+      <a href="#contact" class="price-cta price-cta-secondary">Get Started</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="price-label">Growth</div>
+      <div class="price-amount">£2,997<span>/mo</span></div>
+      <p class="price-desc">Full stack marketing for businesses serious about scaling. Our most popular package.</p>
+      <ul class="price-features">
+        <li>Multi channel ads (Meta + Google)</li>
+        <li>Full automation stack build</li>
+        <li>AI chatbot integration</li>
+        <li>Landing pages and funnels</li>
+        <li>Weekly strategy calls</li>
+        <li>Dedicated Slack channel</li>
+      </ul>
+      <a href="#contact" class="price-cta price-cta-primary">Book Strategy Call</a>
+    </div>
+
+    <div class="price-card">
+      <div class="price-label">Scale</div>
+      <div class="price-amount">£4,997<span>/mo</span></div>
+      <p class="price-desc">Your entire marketing department, outsourced. For businesses doing £50k+ per month ready to 3x.</p>
+      <ul class="price-features">
+        <li>All Growth features included</li>
+        <li>Full AI integration suite</li>
+        <li>Content strategy and creation</li>
+        <li>Advanced attribution tracking</li>
+        <li>Priority support and daily check ins</li>
+        <li>Quarterly growth roadmap</li>
+      </ul>
+      <a href="#contact" class="price-cta price-cta-secondary">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <span class="section-label">// How It Works</span>
+  <h2 class="section-title">From zero to growth machine in 14 days</h2>
+  <p class="section-desc">Our battle tested onboarding gets you live and generating leads in two weeks flat.</p>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Strategy Call</h3>
+      <p>30 minute deep dive into your business, goals, and current marketing. We identify the biggest growth levers and build your custom roadmap.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>System Build</h3>
+      <p>We build your entire automation stack, ad campaigns, funnels, and CRM workflows. Everything tested and quality checked before launch.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Launch + Optimise</h3>
+      <p>Go live with full support. We monitor, optimise, and scale what works. Weekly reports show exactly where every pound goes.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>Scale + Compound</h3>
+      <p>Once the system is profitable, we double down. New channels, bigger budgets, more automations. Compound growth, month over month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CRM -->
+<section id="crm">
+  <span class="section-label">// CRM Platform</span>
+  <h2 class="section-title">One platform for everything</h2>
+  <p class="section-desc">All clients get access to HeroMarketer, our all in one CRM and marketing platform. Built for growth.</p>
+
+  <div class="crm-section">
+    <div class="crm-features">
+      <div class="crm-feature">
+        <div class="crm-feature-icon">📧</div>
+        <div>
+          <h4>Email + SMS Marketing</h4>
+          <p>Unlimited contacts, campaigns, sequences, and broadcasts from one dashboard.</p>
+        </div>
+      </div>
+      <div class="crm-feature">
+        <div class="crm-feature-icon">🔄</div>
+        <div>
+          <h4>Pipeline Management</h4>
+          <p>Visual pipelines, deal tracking, automated follow ups, and revenue forecasting.</p>
+        </div>
+      </div>
+      <div class="crm-feature">
+        <div class="crm-feature-icon">📊</div>
+        <div>
+          <h4>Funnels + Landing Pages</h4>
+          <p>Drag and drop builder with templates, split testing, and analytics built in.</p>
+        </div>
+      </div>
+      <div class="crm-feature">
+        <div class="crm-feature-icon">🤖</div>
+        <div>
+          <h4>AI Chat + Booking</h4>
+          <p>AI chatbot that qualifies leads 24/7 and books them straight into your calendar.</p>
+        </div>
+      </div>
+      <div class="crm-feature">
+        <div class="crm-feature-icon">📱</div>
+        <div>
+          <h4>Reputation Management</h4>
+          <p>Automated review requests, social proof collection, and review response.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="crm-price-box">
+      <h3>HeroMarketer CRM</h3>
+      <p style="color: var(--text-muted); font-size: 0.82rem;">Powered by HeroCRM</p>
+      <div class="crm-price">£297<span>/mo</span></div>
+      <p>Everything you need to run your entire marketing ops from one platform. Replaces 8+ tools. Included at a discounted rate for all ElevateX clients.</p>
+      <a href="#contact" class="btn-primary" style="width:100%; justify-content:center;">Start 14 Day Free Trial</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section>
+  <span class="section-label">// Client Results</span>
+  <h2 class="section-title">Do not take our word for it</h2>
+  <p class="section-desc">Real results from real businesses we have helped grow.</p>
+
+  <div class="testimonials-row">
+    <div class="testimonial">
+      <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+      <p>"ElevateX completely transformed how we acquire customers. We went from spending hours on manual follow ups to a fully automated system that books calls for us while we sleep."</p>
+      <div class="testimonial-author"><strong>Sarah T.</strong> — E-commerce Founder</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+      <p>"The AI chatbot alone has saved us 20+ hours a week. Combined with their ad management, we have seen a 3.8x return on our marketing spend within the first 90 days."</p>
+      <div class="testimonial-author"><strong>James R.</strong> — SaaS CEO</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+      <p>"Finally a team that understands both the tech and the marketing. They built our entire lead gen system from scratch and it has been printing leads ever since."</p>
+      <div class="testimonial-author"><strong>Mark D.</strong> — Agency Owner</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <span class="section-label">// Get Started</span>
+  <h2 class="section-title">Ready to build your growth machine?</h2>
+  <p class="section-desc">Book a free 30 minute strategy call. No hard sell, just a clear roadmap to scale your business.</p>
+  <a href="https://calendly.com" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">Book Your Free Strategy Call →</a>
+  <p style="margin-top: 1.25rem; font-size: 0.78rem; color: var(--text-muted);">Limited to 5 new clients per month</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 ElevateX Solutions Ltd. All rights reserved. Company registered in England & Wales.</p>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    <a href="/cdn-cgi/l/email-protection#e0818c8598a0858c859681948598938f8c9594898f8e93ce838fce958b">Contact</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.service-card, .price-card, .step, .testimonial, .crm-feature').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document

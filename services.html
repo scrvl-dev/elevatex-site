@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElevateX | Done-For-You Marketing for Service Businesses</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06060a;
+  --surface: #0e0e13;
+  --surface-2: #151519;
+  --surface-3: #1c1c22;
+  --border: #252530;
+  --border-light: #32323e;
+  --text: #e2e0dc;
+  --text-muted: #79797f;
+  --text-dim: #55555c;
+  --accent: #c8ff00;
+  --accent-soft: rgba(200,255,0,0.08);
+  --accent-mid: rgba(200,255,0,0.15);
+  --accent-glow: rgba(200,255,0,0.25);
+  --white: #fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+
+/* NAV */
+.nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(24px);background:rgba(6,6,10,0.85);border-bottom:1px solid var(--border);}
+.logo{font-family:'Instrument Serif',serif;font-size:1.4rem;color:var(--white);text-decoration:none;}
+.logo span{color:var(--accent);}
+.nav-right{display:flex;align-items:center;gap:1.5rem;}
+.nav-link{color:var(--text-muted);text-decoration:none;font-size:0.82rem;font-weight:500;transition:color 0.3s;}
+.nav-link:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:var(--bg);padding:0.55rem 1.2rem;border-radius:6px;font-weight:600;font-size:0.78rem;text-decoration:none;transition:transform 0.2s,box-shadow 0.3s;}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--accent-soft);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem 2rem 5rem;position:relative;}
+.hero-glow{position:absolute;top:-5%;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse,var(--accent-soft) 0%,transparent 65%);pointer-events:none;animation:heroGlow 8s ease-in-out infinite;}
+@keyframes heroGlow{0%,100%{opacity:0.5;transform:translateX(-50%) scale(1);}50%{opacity:0.8;transform:translateX(-50%) scale(1.08);}}
+.hero-inner{position:relative;z-index:2;max-width:780px;}
+.hero-pill{display:inline-flex;align-items:center;gap:0.5rem;background:var(--surface);border:1px solid var(--border);padding:0.45rem 1rem;border-radius:100px;font-size:0.75rem;color:var(--text-muted);margin-bottom:1.75rem;animation:fadeUp 0.7s ease both;}
+.hero-pill .pulse{width:7px;height:7px;background:var(--accent);border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+.hero h1{font-family:'Instrument Serif',serif;font-size:clamp(2.6rem,6.5vw,4.8rem);line-height:1.06;letter-spacing:-0.035em;color:var(--white);animation:fadeUp 0.7s ease 0.08s both;}
+.hero h1 em{color:var(--accent);font-style:italic;}
+.hero-sub{font-size:1.1rem;color:var(--text-muted);max-width:540px;margin:1.5rem auto 0;line-height:1.7;font-weight:300;animation:fadeUp 0.7s ease 0.16s both;}
+.hero-ctas{display:flex;gap:0.75rem;justify-content:center;margin-top:2.25rem;animation:fadeUp 0.7s ease 0.24s both;flex-wrap:wrap;}
+.btn-main{background:var(--accent);color:var(--bg);padding:0.95rem 2.2rem;border:none;border-radius:8px;font-size:0.92rem;font-weight:700;cursor:pointer;text-decoration:none;transition:transform 0.2s,box-shadow 0.3s;display:inline-flex;align-items:center;gap:0.5rem;}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 40px var(--accent-glow);}
+.btn-ghost{background:transparent;color:var(--text);padding:0.95rem 2.2rem;border:1px solid var(--border);border-radius:8px;font-size:0.92rem;font-weight:500;cursor:pointer;text-decoration:none;transition:border-color 0.3s,background 0.3s;}
+.btn-ghost:hover{border-color:var(--accent);background:var(--accent-soft);}
+
+/* TRUST BAR */
+.trust{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem;text-align:center;}
+.trust p{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:1.25rem;}
+.trust-logos{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;align-items:center;}
+.trust-item{font-family:'Instrument Serif',serif;font-size:1.2rem;color:var(--text-muted);opacity:0.5;transition:opacity 0.3s;}
+.trust-item:hover{opacity:1;}
+
+/* PAIN SECTION */
+.pain{max-width:900px;margin:0 auto;padding:6rem 2rem;text-align:center;}
+.pain h2{font-family:'Instrument Serif',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--white);letter-spacing:-0.02em;line-height:1.15;margin-bottom:2.5rem;}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;text-align:left;}
+.pain-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:border-color 0.3s;}
+.pain-item:hover{border-color:rgba(255,77,77,0.3);}
+.pain-icon{font-size:1.3rem;margin-bottom:0.75rem;}
+.pain-item h4{font-size:0.9rem;color:var(--white);margin-bottom:0.35rem;}
+.pain-item p{font-size:0.82rem;color:var(--text-muted);line-height:1.55;}
+
+/* SOLUTION */
+.solution{max-width:1100px;margin:0 auto;padding:6rem 2rem;}
+.sol-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin-bottom:0.75rem;}
+.sol-title{font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,3rem);color:var(--white);letter-spacing:-0.02em;line-height:1.12;max-width:600px;margin-bottom:0.75rem;}
+.sol-desc{color:var(--text-muted);font-size:0.95rem;max-width:520px;line-height:1.65;margin-bottom:3rem;}
+.sol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.sol-card{background:var(--surface);padding:2.5rem 2rem;position:relative;overflow:hidden;}
+.sol-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);transform:scaleX(0);transform-origin:left;transition:transform 0.5s;}
+.sol-card:hover::after{transform:scaleX(1);}
+.sol-num{font-family:'JetBrains Mono',monospace;font-size:2rem;color:var(--accent);opacity:0.2;font-weight:500;margin-bottom:1rem;}
+.sol-card h3{font-size:1.05rem;color:var(--white);font-weight:600;margin-bottom:0.5rem;}
+.sol-card p{font-size:0.84rem;color:var(--text-muted);line-height:1.6;}
+.sol-tag{display:inline-flex;align-items:center;gap:0.3rem;margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;padding:0.3rem 0.6rem;border:1px solid var(--accent-mid);border-radius:4px;}
+
+/* WHO IT'S FOR */
+.who{max-width:900px;margin:0 auto;padding:6rem 2rem;text-align:center;}
+.who h2{font-family:'Instrument Serif',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--white);letter-spacing:-0.02em;margin-bottom:1rem;}
+.who>p{color:var(--text-muted);font-size:0.95rem;margin-bottom:2.5rem;}
+.who-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem;}
+.who-pill{background:var(--surface);border:1px solid var(--border);padding:0.6rem 1.2rem;border-radius:100px;font-size:0.82rem;color:var(--text);transition:border-color 0.3s,background 0.3s;}
+.who-pill:hover{border-color:var(--accent);background:var(--accent-soft);}
+
+/* RESULTS */
+.results{max-width:1100px;margin:0 auto;padding:6rem 2rem;}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;margin-top:2.5rem;}
+.result-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;position:relative;overflow:hidden;}
+.result-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),rgba(200,255,0,0.2));}
+.result-metric{font-family:'JetBrains Mono',monospace;font-size:2.2rem;color:var(--accent);font-weight:500;margin-bottom:0.5rem;}
+.result-card h4{font-size:0.92rem;color:var(--white);margin-bottom:0.4rem;}
+.result-card p{font-size:0.82rem;color:var(--text-muted);line-height:1.55;}
+
+/* PRICING */
+.pricing{max-width:700px;margin:0 auto;padding:6rem 2rem;}
+.price-box{background:var(--surface);border:1px solid var(--accent-mid);border-radius:16px;padding:3rem;text-align:center;position:relative;overflow:hidden;}
+.price-box::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,var(--accent-soft),transparent 70%);pointer-events:none;}
+.price-amount{font-family:'JetBrains Mono',monospace;font-size:3rem;color:var(--white);font-weight:500;position:relative;}
+.price-amount span{font-size:1rem;color:var(--text-muted);}
+.price-note{font-size:0.78rem;color:var(--text-muted);position:relative;margin-top:0.25rem;margin-bottom:2rem;}
+.included{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem;text-align:left;margin-bottom:2rem;position:relative;}
+.included li{list-style:none;font-size:0.82rem;color:var(--text);display:flex;align-items:center;gap:0.5rem;padding:0.35rem 0;}
+.included li::before{content:'✓';color:var(--accent);font-weight:700;font-size:0.72rem;min-width:14px;}
+
+/* BOOKING SECTION */
+.booking{max-width:800px;margin:0 auto;padding:4rem 2rem 6rem;}
+.booking-container{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;overflow:hidden;}
+.booking-header{text-align:center;margin-bottom:2rem;}
+.booking-header h2{font-family:'Instrument Serif',serif;font-size:1.8rem;color:var(--white);margin-bottom:0.5rem;}
+.booking-header p{color:var(--text-muted);font-size:0.88rem;}
+.cal-embed{min-height:500px;background:var(--bg);border-radius:10px;overflow:hidden;}
+
+/* FAQ */
+.faq{max-width:700px;margin:0 auto;padding:4rem 2rem 6rem;}
+.faq h2{font-family:'Instrument Serif',serif;font-size:1.8rem;color:var(--white);text-align:center;margin-bottom:2rem;}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0;}
+.faq-q{font-size:0.92rem;color:var(--white);font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.faq-q::after{content:'+';color:var(--accent);font-size:1.2rem;transition:transform 0.3s;}
+.faq-item.open .faq-q::after{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s;padding-top:0;}
+.faq-item.open .faq-a{max-height:300px;padding-top:0.75rem;}
+.faq-a p{font-size:0.84rem;color:var(--text-muted);line-height:1.65;}
+
+/* FINAL CTA */
+.final-cta{text-align:center;padding:4rem 2rem 8rem;position:relative;}
+.final-cta::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:700px;height:350px;background:radial-gradient(ellipse,var(--accent-soft),transparent 70%);pointer-events:none;}
+.final-cta h2{font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,3rem);color:var(--white);position:relative;margin-bottom:0.75rem;}
+.final-cta p{color:var(--text-muted);font-size:0.95rem;position:relative;margin-bottom:2rem;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2.5rem 2rem;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:0.72rem;color:var(--text-dim);}
+footer a{font-size:0.72rem;color:var(--text-dim);text-decoration:none;transition:color 0.3s;}
+footer a:hover{color:var(--accent);}
+.footer-links{display:flex;gap:1.25rem;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:768px){
+  .nav-link{display:none;}
+  .sol-grid{grid-template-columns:1fr;}
+  .included{grid-template-columns:1fr;}
+  .hero{padding:6rem 1.25rem 4rem;}
+  .pain,.solution,.who,.results,.pricing,.faq,.booking{padding-left:1.25rem;padding-right:1.25rem;}
+  footer{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     GHL IMPLEMENTATION NOTES:
+     
+     Option A (Recommended): Custom Code Block
+     1. In GHL Funnel Builder, create a new funnel step
+     2. Add a "Custom Code" element
+     3. Paste this ENTIRE file into the code block
+     4. Remove the <html>, <head>, <body> wrapper tags
+        (GHL provides its own)
+     5. Keep the <style> block and all content
+     
+     Option B: Full Custom Page
+     1. In GHL, go to Sites > Funnels > New Funnel
+     2. Choose "Import" or "Code" page type
+     3. Paste full HTML
+     
+     TRACKING: Add your GHL tracking script and
+     Meta Pixel before </head>
+     
+     CAL.COM: Replace YOUR_CAL_USERNAME below with
+     your actual Cal.com username
+     
+     GHL FORM: If you prefer GHL native forms instead
+     of the embedded Cal.com, replace the cal-embed
+     div with a GHL form element from the builder
+     ══════════════════════════════════════════════ -->
+
+<!-- META PIXEL (paste your pixel code here) -->
+<!-- <script>
+!function(f,b,e,v,n,t,s)...
+</script> -->
+
+<!-- GHL TRACKING (paste your GHL tracking script here) -->
+<!-- <script src="https://link.msgsndr.com/js/form_embed.js"></script> -->
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="logo">Elevate<span>X</span></a>
+  <div class="nav-right">
+    <a href="#how" class="nav-link">How It Works</a>
+    <a href="#results" class="nav-link">Results</a>
+    <a href="#price" class="nav-link">Pricing</a>
+    <a href="#book" class="nav-cta">Book Free Strategy Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-pill"><span class="pulse"></span> Only taking 5 clients this month</div>
+    <h1>Stop chasing leads.<br>Start <em>attracting</em> them.</h1>
+    <p class="hero-sub">We build the complete marketing system for your service business: ads, funnels, automation, and AI. All done for you. You focus on delivering your service, we fill your calendar.</p>
+    <div class="hero-ctas">
+      <a href="#book" class="btn-main">Get Your Free Growth Audit →</a>
+      <a href="#how" class="btn-ghost">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <p>Built for service businesses across the UK</p>
+  <div class="trust-logos">
+    <span class="trust-item">Dental Practices</span>
+    <span class="trust-item">Aesthetic Clinics</span>
+    <span class="trust-item">Estate Agents</span>
+    <span class="trust-item">Recruitment Firms</span>
+    <span class="trust-item">Home Services</span>
+  </div>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="pain">
+  <h2>Sound familiar?</h2>
+  <div class="pain-grid">
+    <div class="pain-item">
+      <div class="pain-icon">😤</div>
+      <h4>Leads go cold before you respond</h4>
+      <p>An enquiry comes in at 8pm. You reply at 9am. They have already booked with your competitor.</p>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">💸</div>
+      <h4>Wasting money on ads that do not convert</h4>
+      <p>You boost posts on Facebook, get likes, but zero paying customers. No funnel, no follow up, no system.</p>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">⏰</div>
+      <h4>Spending hours on manual follow ups</h4>
+      <p>Copy pasting messages, chasing invoices, manually booking appointments. You are the business and the admin.</p>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">🤷</div>
+      <h4>No idea what is actually working</h4>
+      <p>You do not know where your best clients come from, what your cost per lead is, or why last month was quiet.</p>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">🔧</div>
+      <h4>Too many disconnected tools</h4>
+      <p>Mailchimp for emails, Calendly for bookings, a spreadsheet for leads, WhatsApp for follow ups. Nothing talks to each other.</p>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">😩</div>
+      <h4>Tried agencies before and got burned</h4>
+      <p>They promised the world, charged monthly, sent a report full of vanity metrics, and you still had no customers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution" id="how">
+  <div class="sol-label">// The ElevateX System</div>
+  <div class="sol-title">Everything you need to fill your calendar. Nothing you do not.</div>
+  <div class="sol-desc">We do not just run ads. We build a complete marketing machine that attracts, qualifies, follows up, and books clients for you, on autopilot.</div>
+
+  <div class="sol-grid">
+    <div class="sol-card">
+      <div class="sol-num">01</div>
+      <h3>Paid Advertising</h3>
+      <p>Meta and Google Ads built to generate enquiries from customers actively searching for your service. Strategy, creative, targeting, and daily optimisation all handled by us.</p>
+      <div class="sol-tag">✦ Meta + Google Ads</div>
+    </div>
+    <div class="sol-card">
+      <div class="sol-num">02</div>
+      <h3>Funnels + Landing Pages</h3>
+      <p>High converting landing pages designed to turn clicks into enquiries. Custom built for your service, your audience, your local area. A/B tested and optimised monthly.</p>
+      <div class="sol-tag">✦ Custom Built</div>
+    </div>
+    <div class="sol-card">
+      <div class="sol-num">03</div>
+      <h3>Marketing Automation</h3>
+      <p>Instant lead response via SMS and email. Automated follow up sequences that nurture cold leads into booked appointments. Missed call text back. Review request automation. All on autopilot.</p>
+      <div class="sol-tag">✦ Full Automation</div>
+    </div>
+    <div class="sol-card">
+      <div class="sol-num">04</div>
+      <h3>AI Chat + Booking</h3>
+      <p>An AI assistant on your website and social channels that qualifies leads, answers FAQs, and books them straight into your calendar 24 hours a day, 7 days a week. Never miss a lead again.</p>
+      <div class="sol-tag">✦ 24/7 Live</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="who">
+  <h2>Built for service businesses ready to scale</h2>
+  <p>If you deliver a service and need more clients through the door, this is for you.</p>
+  <div class="who-pills">
+    <span class="who-pill">🦷 Dental Practices</span>
+    <span class="who-pill">💉 Aesthetic Clinics</span>
+    <span class="who-pill">🏠 Estate Agents</span>
+    <span class="who-pill">🔧 Plumbers + Electricians</span>
+    <span class="who-pill">🏋️ Gyms + PTs</span>
+    <span class="who-pill">👥 Recruitment Agencies</span>
+    <span class="who-pill">⚖️ Law Firms</span>
+    <span class="who-pill">🧹 Cleaning Companies</span>
+    <span class="who-pill">📸 Photographers</span>
+    <span class="who-pill">🏗️ Builders + Contractors</span>
+    <span class="who-pill">💆 Spas + Salons</span>
+    <span class="who-pill">📋 Consultants + Coaches</span>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results" id="results">
+  <div class="sol-label">// Real Results</div>
+  <div class="sol-title">What happens when the system is live</div>
+  <div class="sol-desc">These are the kind of results our clients see within the first 90 days of going live.</div>
+
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-metric">312%</div>
+      <h4>Increase in booked appointments</h4>
+      <p>Aesthetic clinic went from 8 bookings per week to 33 after launching automated lead follow up and Meta ads.</p>
+    </div>
+    <div class="result-card">
+      <div class="result-metric">£47</div>
+      <h4>Average cost per new patient</h4>
+      <p>Dental practice generating new patient enquiries at £47 each via Google Ads with automated booking flow.</p>
+    </div>
+    <div class="result-card">
+      <div class="result-metric">22hrs</div>
+      <h4>Saved per week on admin</h4>
+      <p>Recruitment agency eliminated manual candidate follow ups and client reporting with end to end automation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="price">
+  <div class="price-box">
+    <div class="sol-label">// One System. One Price. Everything Included.</div>
+    <h2 style="font-family:'Instrument Serif',serif;font-size:2rem;color:var(--white);position:relative;margin-bottom:0.5rem;">Done-For-You Marketing</h2>
+    <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;position:relative;margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto;">Everything included. No hidden fees. No long contracts. Cancel with 30 days notice. We only win when you win.</p>
+    <div class="price-amount">£1,997<span>/mo</span></div>
+    <div class="price-note">Ad spend separate. We recommend starting at £500 to £1,500/mo.</div>
+    <ul class="included">
+      <li>Meta + Google Ad management</li>
+      <li>Custom landing pages + funnels</li>
+      <li>Full CRM setup and management</li>
+      <li>Email + SMS automation sequences</li>
+      <li>AI chatbot (24/7 lead qualification)</li>
+      <li>Missed call text back</li>
+      <li>Review request automation</li>
+      <li>Weekly reporting dashboard</li>
+      <li>Bi-weekly strategy calls</li>
+      <li>Dedicated Slack support channel</li>
+    </ul>
+    <a href="#book" class="btn-main" style="width:100%;justify-content:center;font-size:0.95rem;">Book Your Free Strategy Call →</a>
+    <p style="font-size:0.72rem;color:var(--text-dim);margin-top:0.75rem;position:relative;">No credit card required. 30 minute call. Zero hard sell.</p>
+  </div>
+</section>
+
+<!-- BOOKING SECTION WITH CAL.COM -->
+<section class="booking" id="book">
+  <div class="booking-container">
+    <div class="booking-header">
+      <div class="sol-label">// Book Your Call</div>
+      <h2>Free 30 Minute Strategy Session</h2>
+      <p>Pick a time that works. We will audit your marketing, find the gaps, and map out a custom growth plan for your business.</p>
+    </div>
+    <div class="cal-embed" id="cal-embed">
+      <!-- ═══════════════════════════════════════════
+           CAL.COM EMBED INSTRUCTIONS:
+           
+           1. Go to Cal.com > Event Types > Your Event
+           2. Click "Embed" > "Inline Embed"
+           3. Copy the embed code
+           4. Paste it below, replacing the placeholder
+           
+           The embed script below uses Cal.com's 
+           official embed. Replace YOUR_CAL_USERNAME
+           and YOUR_EVENT_SLUG with your details.
+           ═══════════════════════════════════════════ -->
+    </div>
+  </div>
+</section>
+
+<!-- Cal.com Embed Script -->
+<script>
+(function() {
+  // ══════════════════════════════════════════════
+  // CONFIGURE THESE TWO VALUES:
+  var CAL_USERNAME = "YOUR_CAL_USERNAME";   // e.g. "alex-elevatex"
+  var EVENT_SLUG = "strategy-call";         // e.g. "30min" or "strategy-call"
+  // ══════════════════════════════════════════════
+  
+  var script = document.createElement('script');
+  script.src = 'https://app.cal.com/embed/embed.js';
+  script.async = true;
+  script.onload = function() {
+    Cal("init", {origin:"https://cal.com"});
+    Cal("inline", {
+      elementOrSelector: "#cal-embed",
+      calLink: CAL_USERNAME + "/" + EVENT_SLUG,
+      layout: "month_view",
+      config: {
+        theme: "dark"
+      }
+    });
+    Cal("ui", {
+      theme: "dark",
+      styles: { branding: { brandColor: "#c8ff00" } },
+      hideEventTypeDetails: false,
+      layout: "month_view"
+    });
+  };
+  document.head.appendChild(script);
+})();
+</script>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2>Questions you might have</h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How quickly will I see results?</div>
+    <div class="faq-a"><p>Most clients see their first leads within 7 to 14 days of going live. The full system usually hits peak performance around the 60 to 90 day mark as we optimise targeting, creative, and automation based on real data.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to provide the ad budget?</div>
+    <div class="faq-a"><p>Yes, ad spend is separate from our management fee. We recommend starting with £500 to £1,500 per month depending on your service and area. We will advise on the right budget during your strategy call.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Am I locked into a long contract?</div>
+    <div class="faq-a"><p>No. We work on a rolling monthly basis. 30 days notice to cancel. We believe in earning your business every single month. That said, the best results come from a minimum 90 day commitment so the system has time to optimise.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">I have been burned by agencies before. How are you different?</div>
+    <div class="faq-a"><p>We do not just run ads and send you a PDF report. We build a complete system: the ads, the funnel, the follow up, the automation, and the CRM. Everything is connected. You see exactly where every lead comes from and where every pound goes. Transparent reporting, weekly calls, and a dedicated support channel. If it is not working, we fix it or you walk.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What do I need to get started?</div>
+    <div class="faq-a"><p>Just a 30 minute strategy call. We handle everything from there: ad account setup, funnel builds, CRM configuration, automation flows. You give us access to your ad accounts and domain, and we build the entire system. Most clients are fully live within 14 days of signing up.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I already have a website?</div>
+    <div class="faq-a"><p>Great. We will audit it and either optimise it or build dedicated landing pages alongside it. Ads work best when they send traffic to purpose built conversion pages, not generic homepages. Your existing site stays as is.</p></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Ready to stop chasing and<br>start <em style="color:var(--accent);font-family:'Instrument Serif',serif;">growing</em>?</h2>
+  <p>Book a free 30 minute strategy call. We will audit your marketing, show you the gaps, and build a custom growth plan.</p>
+  <a href="#book" class="btn-main" style="font-size:1rem;padding:1.1rem 2.8rem;position:relative;">Book Your Free Strategy Call →</a>
+  <p style="margin-top:1rem;font-size:0.72rem;color:var(--text-dim);position:relative;">Slots are limited. If this page is live, we still have availability.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 ElevateX Solutions Ltd. Registered in England & Wales.</p>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="/cdn-cgi/l/email-protection#9ffef3fae7dffaf3fae9feebfae7ecf0f3eaebf6f0f1ecb1fcf0b1eaf4"><span class="__cf_email__" data-cfemail="57363b322f17323b32213623322f24383b22233e38392479343879223c">[email&#160;protected]</span></a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Scroll animations
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.style.opacity='1';el.target.style.transform='translateY(0)';}});},{threshold:0.08});
+document.querySelectorAll('.pain-item,.sol-card,.result-card,.who-pill,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el);});
+// Smooth scroll

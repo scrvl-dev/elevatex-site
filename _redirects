@@ -1,0 +1,6 @@
+# Redirect www to non-www
+https://www.elevatexsolutions.co.uk/* https://elevatexsolutions.co.uk/:splat 301
+
+# Clean URL redirects
+/services /services.html 200
+/qualify /qualify.html 200
