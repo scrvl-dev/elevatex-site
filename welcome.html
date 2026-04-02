@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElevateX | Welcome — You're In</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06060a;
+  --surface: #0e0e13;
+  --surface-2: #161619;
+  --border: #252530;
+  --text: #e2e0dc;
+  --text-muted: #79797f;
+  --text-dim: #55555c;
+  --accent: #c8ff00;
+  --accent-soft: rgba(200,255,0,0.08);
+  --accent-mid: rgba(200,255,0,0.15);
+  --accent-glow: rgba(200,255,0,0.25);
+  --white: #fff;
+  --green: #4dff88;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;-webkit-font-smoothing:antialiased;padding:2rem;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+
+.container{max-width:640px;width:100%;position:relative;z-index:1;}
+
+/* Glow */
+.glow{position:fixed;top:-10%;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,var(--accent-soft) 0%,transparent 65%);pointer-events:none;animation:glowPulse 6s ease-in-out infinite;}
+@keyframes glowPulse{0%,100%{opacity:0.5;transform:translateX(-50%) scale(1);}50%{opacity:0.8;transform:translateX(-50%) scale(1.08);}}
+
+/* Logo */
+.logo{font-family:'Instrument Serif',serif;font-size:1.4rem;color:var(--white);text-align:center;margin-bottom:2.5rem;}
+.logo span{color:var(--accent);}
+
+/* Success Card */
+.success-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:3rem;text-align:center;position:relative;overflow:hidden;}
+.success-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--green),transparent);}
+
+.check-icon{width:72px;height:72px;margin:0 auto 1.5rem;background:rgba(77,255,136,0.08);border:2px solid rgba(77,255,136,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;}
+@keyframes popIn{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
+.check-icon svg{width:32px;height:32px;}
+
+.success-card h1{font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--white);letter-spacing:-0.02em;margin-bottom:0.5rem;animation:fadeUp 0.5s ease 0.2s both;}
+.success-card .subtitle{color:var(--text-muted);font-size:0.95rem;line-height:1.6;animation:fadeUp 0.5s ease 0.3s both;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* Divider */
+.divider{width:100%;height:1px;background:var(--border);margin:2rem 0;}
+
+/* Timeline */
+.timeline{text-align:left;animation:fadeUp 0.5s ease 0.4s both;}
+.timeline-title{font-family:'JetBrains Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin-bottom:1.25rem;}
+
+.timeline-item{display:grid;grid-template-columns:40px 1fr;gap:1rem;margin-bottom:1.5rem;position:relative;}
+.timeline-item:last-child{margin-bottom:0;}
+
+.timeline-num{width:40px;height:40px;background:var(--accent-soft);border:1px solid var(--accent-mid);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--accent);font-weight:500;}
+
+.timeline-item h3{font-size:0.92rem;color:var(--white);font-weight:600;margin-bottom:0.2rem;}
+.timeline-item p{font-size:0.82rem;color:var(--text-muted);line-height:1.55;}
+.timeline-item .days{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--accent);opacity:0.6;margin-bottom:0.15rem;}
+
+/* Checklist */
+.checklist{text-align:left;animation:fadeUp 0.5s ease 0.5s both;}
+.checklist-title{font-family:'JetBrains Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin-bottom:1rem;}
+
+.checklist-item{display:flex;align-items:flex-start;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid rgba(37,37,48,0.5);}
+.checklist-item:last-child{border-bottom:none;}
+.checklist-box{width:20px;height:20px;min-width:20px;border:2px solid var(--border);border-radius:5px;margin-top:1px;}
+.checklist-item h4{font-size:0.88rem;color:var(--white);font-weight:500;}
+.checklist-item p{font-size:0.78rem;color:var(--text-muted);margin-top:0.1rem;}
+
+/* CTA */
+.cta-section{text-align:center;animation:fadeUp 0.5s ease 0.6s both;margin-top:0.5rem;}
+.btn-main{background:var(--accent);color:var(--bg);padding:0.9rem 2rem;border:none;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;text-decoration:none;transition:transform 0.2s,box-shadow 0.3s;display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Sans',sans-serif;}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 40px var(--accent-glow);}
+.cta-note{font-size:0.72rem;color:var(--text-dim);margin-top:0.75rem;}
+
+/* Contact box */
+.contact-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;margin-top:2rem;animation:fadeUp 0.5s ease 0.7s both;}
+.contact-box p{font-size:0.82rem;color:var(--text-muted);line-height:1.6;}
+.contact-box a{color:var(--accent);text-decoration:none;font-weight:600;}
+.contact-box a:hover{text-decoration:underline;}
+
+@media(max-width:640px){
+  body{padding:1.25rem;}
+  .success-card{padding:2rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="glow"></div>
+
+<div class="container">
+
+  <div class="logo">Elevate<span>X</span></div>
+
+  <div class="success-card">
+    
+    <div class="check-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#4dff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <h1>Payment confirmed. Welcome aboard.</h1>
+    <p class="subtitle">Your Direct Debit is set up and your marketing machine build starts now. Here is exactly what happens next.</p>
+
+    <div class="divider"></div>
+
+    <!-- TIMELINE -->
+    <div class="timeline">
+      <div class="timeline-title">// Your Onboarding Timeline</div>
+
+      <div class="timeline-item">
+        <div class="timeline-num">1</div>
+        <div>
+          <div class="days">Day 1-2</div>
+          <h3>Onboarding Call</h3>
+          <p>45 minute deep dive into your business goals, target audience, brand assets, and access credentials. We map out everything before building.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-num">2</div>
+        <div>
+          <div class="days">Day 3-7</div>
+          <h3>System Build</h3>
+          <p>We build your ad campaigns, landing pages, CRM, automation flows, AI chatbot, and email sequences. All done for you, from scratch.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-num">3</div>
+        <div>
+          <div class="days">Day 8-10</div>
+          <h3>Testing + QA</h3>
+          <p>We run through every touchpoint: ad previews, form submissions, automation triggers, email deliverability. Nothing goes live until it is perfect.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-num">4</div>
+        <div>
+          <div class="days">Day 11-14</div>
+          <h3>Launch</h3>
+          <p>Ads go live, automations activate, and your marketing machine starts generating leads. We monitor everything daily and optimise weekly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CHECKLIST -->
+    <div class="checklist">
+      <div class="checklist-title">// What I need from you</div>
+
+      <div class="checklist-item">
+        <div class="checklist-box"></div>
+        <div>
+          <h4>Ad account access</h4>
+          <p>Facebook Business Manager admin access and/or Google Ads account</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-box"></div>
+        <div>
+          <h4>Logo + brand colours</h4>
+          <p>Your logo file (PNG preferred) and hex colour codes if you have them</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-box"></div>
+        <div>
+          <h4>Business photos</h4>
+          <p>5 to 10 photos of your business, team, workspace, or happy clients</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-box"></div>
+        <div>
+          <h4>Domain access</h4>
+          <p>Login details for your domain registrar (for landing page setup)</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-box"></div>
+        <div>
+          <h4>Business phone number</h4>
+          <p>The number you want to use for SMS automation and missed call text back</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:1.25rem;">Step one: book your onboarding call so we can get started.</p>
+      <a href="https://cal.com/elavatewithalex/onboarding-call" target="_blank" class="btn-main">Book Your Onboarding Call →</a>
+      <p class="cta-note">45 minutes. This is where we plan everything before the build begins.</p>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-box">
+    <p>Questions before the onboarding call? Reply to your welcome email or reach out directly at <a href="mailto:alex@elevatexsolutions.co.uk">alex@elevatexsolutions.co.uk</a></p>
+  </div>
+
+</div>
+
+</body>
+</html>
