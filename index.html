@@ -714,6 +714,362 @@ footer p {
   transition: color 0.3s;
 }
 
+/* ── PORTFOLIO ── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.portfolio-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.portfolio-card:hover {
+  border-color: rgba(200, 255, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+.portfolio-card.featured {
+  border-color: var(--accent);
+}
+
+.portfolio-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.portfolio-content {
+  padding: 2.5rem 2rem;
+}
+
+.portfolio-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.badge-featured {
+  color: var(--accent);
+  border: 1px solid rgba(200, 255, 0, 0.2);
+  background: rgba(200, 255, 0, 0.06);
+}
+
+.badge-service {
+  color: #4d9fff;
+  border: 1px solid rgba(77, 159, 255, 0.2);
+  background: rgba(77, 159, 255, 0.06);
+}
+
+.portfolio-content h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.4rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.portfolio-content .portfolio-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.portfolio-stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.portfolio-stat h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.portfolio-stat p {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.15rem;
+}
+
+.portfolio-scope {
+  padding: 2.5rem 2rem;
+  background: var(--surface-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.portfolio-scope h4 {
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 1rem;
+}
+
+.scope-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.scope-item::before {
+  content: '✓';
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.7rem;
+  min-width: 14px;
+}
+
+/* Service businesses row */
+.service-biz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.service-biz-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: border-color 0.3s;
+}
+
+.service-biz-card:hover {
+  border-color: rgba(200, 255, 0, 0.2);
+}
+
+.service-biz-card .biz-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-biz-card h4 {
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+
+.service-biz-card p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.service-biz-card .biz-result {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+/* Industries strip */
+.industries-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.industry-tag {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.55rem 1.1rem;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  color: var(--text);
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.industry-tag:hover {
+  border-color: var(--accent);
+  background: rgba(200, 255, 0, 0.04);
+}
+
+.industry-tag.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(200, 255, 0, 0.06);
+}
+
+/* Positioning statement */
+.positioning-box {
+  background: linear-gradient(135deg, rgba(200, 255, 0, 0.03) 0%, var(--surface) 100%);
+  border: 1px solid var(--accent);
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.positioning-box::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(200, 255, 0, 0.06), transparent 70%);
+  pointer-events: none;
+}
+
+.positioning-box h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  position: relative;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.positioning-box h3 em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.positioning-box p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.positioning-pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.pillar {
+  text-align: center;
+}
+
+.pillar-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pillar h4 {
+  font-size: 0.85rem;
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.pillar p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ── FOUNDER STORY ── */
+.founder-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 3.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.founder-left .founder-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.founder-left h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.8rem;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.founder-left h3 em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.founder-left .founder-name {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.founder-credentials {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.credential {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
+
+.founder-right p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.founder-right p strong {
+  color: var(--text);
+}
+
+/* ── RESPONSIVE ADDITIONS ── */
+
 .footer-links a:hover { color: var(--accent); }
 
 /* ── RESPONSIVE ── */
@@ -728,6 +1084,12 @@ footer p {
   .hero-actions { flex-direction: column; }
   .btn-primary, .btn-outline { text-align: center; justify-content: center; }
   footer { flex-direction: column; text-align: center; }
+  .portfolio-inner { grid-template-columns: 1fr; }
+  .founder-section { grid-template-columns: 1fr; padding: 2rem; }
+  .service-biz-grid { grid-template-columns: 1fr; }
+  .positioning-box { padding: 2rem; }
+  .positioning-pillars { grid-template-columns: 1fr 1fr; }
+  .industries-strip { justify-content: flex-start; }
 }
 </style>
 </head>
@@ -740,6 +1102,7 @@ footer p {
     <li><a href="#services">Services</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#process">Process</a></li>
+    <li><a href="#work">Our Work</a></li>
     <li><a href="#crm">CRM</a></li>
     <li><a href="https://cal.com/elavatewithalex/free-strategy-call" target="_blank" class="nav-cta">Book a Call</a></li>
   </ul>
@@ -752,7 +1115,7 @@ footer p {
     Now taking Q2 2026 clients
   </div>
   <h1>We build the marketing <em>machines</em> that grow your business</h1>
-  <p class="hero-sub">Marketing automation, AI integration, and paid advertising systems. Done for you, built to scale. ElevateX Solutions is your growth team on demand.</p>
+  <p class="hero-sub">Marketing automation, AI integration, and paid advertising systems. Done for you, built to scale. We do not just work for you. We become part of your team.</p>
   <div class="hero-actions">
     <a href="https://cal.com/elavatewithalex/free-strategy-call" target="_blank" class="btn-primary">Book a Strategy Call →</a>
     <a href="#services" class="btn-outline">See Our Services</a>
@@ -938,9 +1301,181 @@ footer p {
     <div class="crm-price-box">
       <h3>HeroMarketer CRM</h3>
       <p style="color: var(--text-muted); font-size: 0.82rem;">Powered by HeroCRM</p>
-      <div class="crm-price">£497<span>/mo</span></div>
-      <p>Everything you need to run your entire marketing ops from one platform. Replaces 80+ tools. Included at a discounted rate for all ElevateX clients.</p>
+      <div class="crm-price">£297<span>/mo</span></div>
+      <p>Everything you need to run your entire marketing ops from one platform. Replaces 8+ tools. Included at a discounted rate for all ElevateX clients.</p>
       <a href="https://cal.com/elavatewithalex/free-strategy-call" target="_blank" class="btn-primary" style="width:100%; justify-content:center;">Start 14 Day Free Trial</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO / PAST WORK -->
+<section id="work">
+  <span class="section-label">// Our Work</span>
+  <h2 class="section-title">We do not work for you. We work with you.</h2>
+  <p class="section-desc">We embed into your team, take your vision, and execute it. From fintech startups to local service businesses, we have built growth systems across every industry.</p>
+
+  <!-- INDUSTRIES WE WORK WITH -->
+  <div style="text-align: center; margin-bottom: 3rem;">
+    <p style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 1rem;">Industries we have worked across</p>
+    <div class="industries-strip">
+      <span class="industry-tag active">Fintech</span>
+      <span class="industry-tag active">SaaS</span>
+      <span class="industry-tag">AI + Software</span>
+      <span class="industry-tag">Education</span>
+      <span class="industry-tag">E-commerce</span>
+      <span class="industry-tag">Construction</span>
+      <span class="industry-tag">Dental + Medical</span>
+      <span class="industry-tag">Aesthetics</span>
+      <span class="industry-tag">Recruitment</span>
+      <span class="industry-tag">Property + Estate Agents</span>
+      <span class="industry-tag">Trades + Home Services</span>
+      <span class="industry-tag">Coaching + Consulting</span>
+      <span class="industry-tag">Fitness + Gyms</span>
+      <span class="industry-tag">Legal</span>
+      <span class="industry-tag">SMEs + Startups</span>
+    </div>
+  </div>
+
+  <div class="portfolio-grid">
+    
+    <!-- ATHENA EDGE CASE STUDY -->
+    <div class="portfolio-card featured">
+      <div class="portfolio-inner">
+        <div class="portfolio-content">
+          <span class="portfolio-badge badge-featured">✦ Featured: Fintech / Trading</span>
+          <h3>Athena Edge</h3>
+          <p class="portfolio-sub">Joined as the growth partner for a proprietary trading firm and executed the entire go to market strategy from day one. This was not a "run some ads" engagement. We built the brand, designed the product positioning, created every funnel, wrote every email, managed every campaign, and grew the community from zero. We operated as the marketing department.</p>
+          <div class="portfolio-stats">
+            <div class="portfolio-stat">
+              <h4>45,000+</h4>
+              <p>Email Subscribers</p>
+            </div>
+            <div class="portfolio-stat">
+              <h4>5,000+</h4>
+              <p>Community Members</p>
+            </div>
+            <div class="portfolio-stat">
+              <h4>£2M+</h4>
+              <p>Ad Spend Managed</p>
+            </div>
+            <div class="portfolio-stat">
+              <h4>4</h4>
+              <p>Product Lines Launched</p>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-scope">
+          <h4>What We Executed</h4>
+          <div class="scope-item">Full brand identity, positioning, and messaging</div>
+          <div class="scope-item">Multi-channel paid acquisition (Meta, Google, TikTok)</div>
+          <div class="scope-item">Cold traffic funnels with conversion-optimised landing pages</div>
+          <div class="scope-item">Complete CRM and automation stack (GHL + Klaviyo)</div>
+          <div class="scope-item">Lead magnets, PDFs, and email nurture sequences</div>
+          <div class="scope-item">Community growth strategy (Discord, social, content)</div>
+          <div class="scope-item">Trustpilot review system and social proof automation</div>
+          <div class="scope-item">Website design and development (3 major iterations)</div>
+          <div class="scope-item">Product launch campaigns for 4 challenge account types</div>
+          <div class="scope-item">Investor pitch materials and fundraising documentation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS ACROSS INDUSTRIES -->
+  <div style="margin-top: 3rem;">
+    <span class="section-label">// Results Across Industries</span>
+    <h2 class="section-title" style="margin-top: 0.5rem;">Different businesses, same approach: build the system, then scale it</h2>
+  </div>
+
+  <div class="service-biz-grid">
+    <div class="service-biz-card">
+      <div class="biz-icon">🦷</div>
+      <h4>Dental + Medical</h4>
+      <p>Automated patient acquisition with Meta ads, dedicated landing pages, instant SMS follow up, and AI chat for 24/7 booking. Replaced manual admin with end to end automation.</p>
+      <div class="biz-result">312% increase in booked appointments</div>
+    </div>
+    <div class="service-biz-card">
+      <div class="biz-icon">💉</div>
+      <h4>Aesthetic Clinics</h4>
+      <p>Full funnel campaigns for cosmetic treatments with before and after creative, retargeting sequences, and automated consultation booking. Cut cost per lead by over 60%.</p>
+      <div class="biz-result">Cost per booking: £23 (down from £89)</div>
+    </div>
+    <div class="service-biz-card">
+      <div class="biz-icon">👥</div>
+      <h4>Recruitment Agencies</h4>
+      <p>Dual acquisition system for candidate sourcing and client generation. Automated candidate nurture, client CRM, and eliminated 22 hours per week of manual work.</p>
+      <div class="biz-result">22 hours/week saved on manual processes</div>
+    </div>
+    <div class="service-biz-card">
+      <div class="biz-icon">🏗️</div>
+      <h4>Construction + Trades</h4>
+      <p>Local lead generation through Google Ads and Meta targeting homeowners within service radius. Automated quote follow ups, missed call text back, and review request systems.</p>
+      <div class="biz-result">£12 average cost per qualified lead</div>
+    </div>
+    <div class="service-biz-card">
+      <div class="biz-icon">💻</div>
+      <h4>SaaS + Software</h4>
+      <p>Product launch campaigns, free trial funnels, onboarding email sequences, and churn reduction automation. Built the acquisition engine and the retention systems side by side.</p>
+      <div class="biz-result">3.8x return on marketing spend</div>
+    </div>
+    <div class="service-biz-card">
+      <div class="biz-icon">🎓</div>
+      <h4>Education + Coaching</h4>
+      <p>Course launch funnels, webinar registration campaigns, automated student onboarding, and community growth strategies. From lead to enrolled student, fully automated.</p>
+      <div class="biz-result">£8 cost per course registration</div>
+    </div>
+  </div>
+
+  <!-- POSITIONING STATEMENT -->
+  <div class="positioning-box">
+    <h3>We are not an agency. We are your <em>growth team</em>.</h3>
+    <p>Most agencies send you a report and disappear. We embed into your business. We learn your product, your audience, and your vision. Then we execute it. Think of us as your marketing co-founder, without the equity.</p>
+    <div class="positioning-pillars">
+      <div class="pillar">
+        <div class="pillar-icon">🧠</div>
+        <h4>We Think Like Founders</h4>
+        <p>We treat your budget like our own money. Every pound is tracked, every decision is strategic.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🔧</div>
+        <h4>We Build, Not Just Advise</h4>
+        <p>No strategy decks that sit in a drawer. We build the systems, launch the campaigns, and optimise daily.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🤝</div>
+        <h4>We Embed Into Your Team</h4>
+        <p>WhatsApp group, weekly calls, shared dashboards. We become part of your operation, not an outsider.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">📈</div>
+        <h4>We Only Win When You Win</h4>
+        <p>No long contracts. 30 day notice. We earn your business every single month through results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER STORY -->
+<section>
+  <div class="founder-section">
+    <div class="founder-left">
+      <div class="founder-label">// Meet the Founder</div>
+      <h3>Your business deserves someone who <em>gets it</em></h3>
+      <p class="founder-name">Alex Mustatea, Founder of ElevateX Solutions</p>
+      <div class="founder-credentials">
+        <span class="credential">40+ Clients</span>
+        <span class="credential">£2.4M+ Ad Spend</span>
+        <span class="credential">10 Person Team Led</span>
+        <span class="credential">Fintech to SMEs</span>
+        <span class="credential">UK Based</span>
+      </div>
+    </div>
+    <div class="founder-right">
+      <p><strong>I did not start ElevateX to build another agency.</strong> I started it because I kept seeing brilliant founders, business owners, and operators with incredible products and services, but no system to get them in front of the right people.</p>
+      <p>I have been in the trenches. I was Global Marketing Manager for a fintech company, managing a six figure monthly ad budget and leading a team of 10 across paid media, content, and partnerships. I have consulted for over 40 businesses spanning SaaS, education, e-commerce, construction, healthcare, and professional services. I built the entire go to market strategy for Athena Edge, a prop trading firm, growing it from an idea to a 45,000 person email list and a thriving community of over 5,000 traders.</p>
+      <p>Through all of it, the pattern was always the same. Founders and business owners with real vision, real expertise, and a product worth talking about, but <strong>no system to turn attention into revenue.</strong> They were either doing everything manually, burning money on disconnected tools, or paying agencies who delivered nothing but vanity metrics in a PDF.</p>
+      <p>That is why ElevateX exists. I take your vision and I execute it. I become part of your team. I build the ads, the funnels, the automation, the AI, the CRM, the entire growth engine. <strong>Not as an outsider looking in, but as someone who is genuinely invested in seeing your business succeed.</strong></p>
+      <p>I only take on businesses I believe in. If we are not the right fit, I will tell you on the call. No games, no pressure. Just an honest conversation between two people who care about building something real.</p>
     </div>
   </div>
 </section>
