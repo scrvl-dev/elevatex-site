@@ -157,6 +157,53 @@ footer a:hover{color:var(--accent);}
   footer{flex-direction:column;text-align:center;}
 }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1639910097054373');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1639910097054373&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Meta Pixel: ViewContent Event -->
+<script>
+  fbq('track', 'ViewContent', {
+    content_name: 'ElevateX DFY Services',
+    content_category: 'Marketing Agency',
+    value: 1997.00,
+    currency: 'GBP'
+  });
+</script>
+<!-- End ViewContent Event -->
+
+<!-- Meta Pixel: Schedule Event (Call Booked) -->
+<script>
+  // Listen for Cal.com booking confirmation
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'bookingSuccessful') {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Schedule', {
+          content_name: 'Strategy Call Booked',
+          content_category: 'Booking',
+          value: 500.00,
+          currency: 'GBP'
+        });
+      }
+    }
+  });
+</script>
+<!-- End Schedule Event -->
+
 </head>
 <body>
 
