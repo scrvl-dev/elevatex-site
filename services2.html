@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElevateX | Full Stack Acquisition Machine. Done For You</title>
+<meta name="description" content="15-30 qualified appointments per week. Built for you, managed for you. We handle everything from ads to follow-up so you can focus on running the business.">
+<meta property="og:title" content="ElevateX | Full Stack Acquisition Machine">
+<meta property="og:description" content="15-30 qualified appointments per week. Built for you, managed for you.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://elevatexsolutions.co.uk/services2.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2306060a'/%3E%3Cpath d='M9 9L23 23M23 9L9 23' stroke='%23c8ff00' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1639910097054373');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', { content_name: 'services2', content_category: 'landing_page_v2' });
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1639910097054373&ev=PageView&noscript=1"/></noscript>
+
+<style>
+:root {
+  --bg: #06060a;
+  --surface: #0e0e13;
+  --surface-2: #151519;
+  --surface-3: #1c1c22;
+  --border: #252530;
+  --border-light: #32323e;
+  --text: #e2e0dc;
+  --text-muted: #79797f;
+  --text-dim: #55555c;
+  --accent: #c8ff00;
+  --accent-soft: rgba(200,255,0,0.08);
+  --accent-glow: rgba(200,255,0,0.15);
+  --white: #ffffff;
+  --danger: #ff4d4d;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section label */
+.label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+
+em { color: var(--accent); font-style: italic; }
+
+p { color: var(--text); }
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 6, 10, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.4rem;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav-logo span {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.nav-cta {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.6rem 1.2rem;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--accent-glow);
+}
+
+/* Primary Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 1.1rem 2.2rem;
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), box-shadow 0.3s var(--ease);
+  position: relative;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px var(--accent-glow);
+}
+
+.btn-primary::after {
+  content: '→';
+  font-size: 1.1em;
+  transition: transform 0.2s var(--ease);
+}
+
+.btn-primary:hover::after {
+  transform: translateX(4px);
+}
+
+.btn-wrap {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  padding: 8rem 1.5rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+  filter: blur(60px);
+  pointer-events: none;
+  animation: float 15s ease-in-out infinite;
+}
+
+.hero-glow-2 {
+  position: absolute;
+  bottom: -300px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(200,255,0,0.08) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  animation: float 18s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  50% { transform: translate(-45%, 40px) scale(1.08); }
+}
+
+.hero-content {
+  max-width: 1000px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--surface);
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 4.8rem);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+.hero-sub {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  color: var(--accent);
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trust-item::before {
+  content: '★';
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+
+/* SECTION */
+section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+/* TESTIMONIAL ROW */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimonial-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-light);
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: 0.5rem;
+  left: 1.25rem;
+  font-family: 'Instrument Serif', serif;
+  font-size: 4rem;
+  color: var(--accent);
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.testimonial-quote {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--white);
+  line-height: 1.45;
+  margin-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-author {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.testimonial-role {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* RESULTS GRID */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.result-card {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem 1.75rem;
+  text-align: center;
+  transition: transform 0.4s var(--ease), border-color 0.3s var(--ease), box-shadow 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.result-card:hover {
+  transform: translateY(-6px) rotateX(-2deg) rotateY(2deg);
+  border-color: rgba(200, 255, 0, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(200, 255, 0, 0.1);
+}
+
+.result-card:hover::before {
+  opacity: 1;
+}
+
+.result-number {
+  font-family: 'Instrument Serif', serif;
+  font-size: 3rem;
+  color: var(--accent);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.03em;
+}
+
+.result-label {
+  font-size: 1rem;
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.result-context {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+/* ROADMAP */
+.roadmap {
+  background: var(--surface);
+  padding: 6rem 1.5rem;
+}
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.roadmap-step {
+  position: relative;
+  padding: 2.5rem 2rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.roadmap-step:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.step-number {
+  font-family: 'Instrument Serif', serif;
+  font-size: 3.5rem;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+  display: block;
+}
+
+.step-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.step-heading {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+
+.step-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* FULL PACKAGE SECTION */
+.package-section {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.package-subhead {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--accent);
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.package-section p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* WHO IS THIS FOR */
+.who-section {
+  background: var(--surface);
+}
+
+.who-content {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.who-content p {
+  font-size: 1.08rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.who-content p strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* FOUNDER SECTION */
+.founder-section {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
+}
+
+.founder-content {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.founder-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.credentials-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.credential {
+  text-align: center;
+}
+
+.credential-number {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.credential-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+/* RECENT WINS LIST */
+.wins-list {
+  max-width: 800px;
+  margin: 0 auto;
+  list-style: none;
+}
+
+.wins-list li {
+  padding: 1rem 0 1rem 2rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.wins-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.wins-list li strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* WANT CLIENTS SECTION */
+.want-clients {
+  background: var(--surface);
+  text-align: center;
+}
+
+.want-clients-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.want-clients p {
+  font-size: 1.1rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.pain-points {
+  max-width: 600px;
+  margin: 2rem auto;
+  list-style: none;
+}
+
+.pain-points li {
+  padding: 1rem 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.pain-points li::before {
+  content: '?';
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--danger);
+  color: var(--white);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* FOR YOU / NOT FOR YOU */
+.fit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.fit-col {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+}
+
+.fit-col.yes { border-color: rgba(200, 255, 0, 0.3); }
+.fit-col.no { border-color: rgba(255, 77, 77, 0.2); }
+
+.fit-col h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+}
+
+.fit-col h3 span.yes { color: var(--accent); }
+.fit-col h3 span.no { color: var(--danger); }
+
+.fit-col ul {
+  list-style: none;
+}
+
+.fit-col ul li {
+  padding: 0.75rem 0;
+  font-size: 0.95rem;
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+
+.fit-col ul li .tick {
+  color: var(--accent);
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.fit-col ul li .cross {
+  color: var(--danger);
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+/* OFFER SECTION */
+.offer-section {
+  background: var(--surface);
+}
+
+.offer-list {
+  max-width: 750px;
+  margin: 0 auto;
+  list-style: none;
+}
+
+.offer-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 1.05rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.offer-list li::before {
+  content: '✓';
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* AGENCIES SUCK SECTION */
+.agencies-suck {
+  text-align: center;
+}
+
+.agencies-suck-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.fake-promises {
+  margin: 2.5rem 0;
+}
+
+.fake-promise {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--danger);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 77, 77, 0.6);
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.truth-list {
+  max-width: 700px;
+  margin: 2.5rem auto;
+  list-style: none;
+  text-align: left;
+}
+
+.truth-list li {
+  padding: 0.85rem 0;
+  font-size: 1rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.truth-list li::before {
+  content: '✓';
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.truth-list li strong {
+  color: var(--accent);
+}
+
+/* BOOKING SECTION */
+.booking {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
+  padding: 6rem 1rem;
+}
+
+.booking-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.booking-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.cal-embed {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+/* FOOTER */
+.footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.footer-logo span {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.footer-text {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  section { padding: 4rem 0; }
+  .hero { padding: 7rem 1rem 3rem; }
+  .trust-row { flex-direction: column; gap: 0.75rem; }
+  .fit-grid { grid-template-columns: 1fr; }
+  .credentials-row { gap: 1.5rem; padding: 1.5rem 1rem; }
+  .credential-number { font-size: 1.6rem; }
+  .nav { padding: 0.75rem 1rem; }
+  .nav-cta { padding: 0.5rem 0.9rem; font-size: 0.75rem; }
+  .btn-primary { padding: 0.95rem 1.6rem; font-size: 0.9rem; }
+  .result-number { font-size: 2.5rem; }
+  .testimonial-card, .result-card { padding: 1.75rem 1.25rem; }
+  .fake-promise { font-size: 1.4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-glow, .hero-glow-2 { animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <a href="/" class="nav-logo">Elevate<span>X</span></a>
+  <a href="#book" class="nav-cta">Book A Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="container hero-content">
+    <span class="hero-label">// Full Stack Acquisition Machine. Done For You</span>
+    <h1>15-30 <em>Qualified</em> Appointments Per Week. Built For You. Managed For You.</h1>
+    <p class="hero-sub">Marketing + Sales + Automation. One system.</p>
+    <p class="hero-desc">We handle everything from ads, lead generation, follow-up, appointment booking, AI chat, email, SMS, and WhatsApp automation. So you can focus on running the business.</p>
+    
+    <a href="#book" class="btn-primary">Book A Free Strategy Call</a>
+    
+    <div class="trust-row">
+      <div class="trust-item">Working with UK service businesses</div>
+      <div class="trust-item">40+ clients served</div>
+      <div class="trust-item">£2.5M+ ad spend managed</div>
+    </div>
+
+
+<!-- TESTIMONIAL ROW 1 -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// Hear From Our Clients</span>
+      <h2>What Clients <em>Say</em></h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote">Went from 8 bookings a week to 33 in 90 days. Cost per booking dropped from £89 to £23.</p>
+        <div class="testimonial-author">Aesthetic Clinic Owner</div>
+        <div class="testimonial-role">London</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote">ElevateX built the entire growth engine. 45,000+ emails, 5,000+ community, £2M+ ad spend managed. Game changer.</p>
+        <div class="testimonial-author">Athena Edge Founder</div>
+        <div class="testimonial-role">Fintech / Prop Trading</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote">Saved me 22 hours a week on manual admin. Bookings up 3x in month one.</p>
+        <div class="testimonial-author">Recruitment Agency Director</div>
+        <div class="testimonial-role">Manchester</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote">Finally an agency that actually builds the system, not just runs ads. My pipeline is full.</p>
+        <div class="testimonial-author">SaaS Founder</div>
+        <div class="testimonial-role">London</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT RESULTS GRID -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// Real Numbers. Real Businesses.</span>
+      <h2>Client <em>Results</em></h2>
+    </div>
+    <div class="results-grid">
+      <div class="result-card reveal">
+        <div class="result-number">312%</div>
+        <div class="result-label">Increase in Booked Consultations</div>
+        <div class="result-context">Dental Practice · 90 days</div>
+      </div>
+      <div class="result-card reveal">
+        <div class="result-number">£12</div>
+        <div class="result-label">Cost Per Qualified Lead</div>
+        <div class="result-context">Construction · Meta Ads</div>
+      </div>
+      <div class="result-card reveal">
+        <div class="result-number">3.8x</div>
+        <div class="result-label">Return On Ad Spend</div>
+        <div class="result-context">SaaS Client · Q1 2026</div>
+      </div>
+      <div class="result-card reveal">
+        <div class="result-number">£23</div>
+        <div class="result-label">Cost Per Booking</div>
+        <div class="result-context">Aesthetic Clinic · Down from £89</div>
+      </div>
+      <div class="result-card reveal">
+        <div class="result-number">22hrs</div>
+        <div class="result-label">Saved Per Week on Admin</div>
+        <div class="result-context">Recruitment · Automation</div>
+      </div>
+      <div class="result-card reveal">
+        <div class="result-number">£8</div>
+        <div class="result-label">Cost Per Registration</div>
+        <div class="result-context">Education Provider</div>
+      </div>
+    </div>
+    <div class="btn-wrap">
+      <a href="#book" class="btn-primary">Book A Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="roadmap">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// How It Works</span>
+      <h2>The ElevateX <em>Roadmap</em></h2>
+    </div>
+    <div class="roadmap-grid">
+      <div class="roadmap-step reveal">
+        <span class="step-number">01</span>
+        <span class="step-title">Build</span>
+        <h3 class="step-heading">Audit + Architect</h3>
+        <p class="step-desc">We audit your business, map your funnel, and architect the complete system. Ads, landing pages, CRM, automation, and AI chat all designed around your business.</p>
+      </div>
+      <div class="roadmap-step reveal">
+        <span class="step-number">02</span>
+        <span class="step-title">Launch</span>
+        <h3 class="step-heading">Build + Deploy</h3>
+        <p class="step-desc">We build it all. Meta and Google ads, custom landing pages, full automation stack, AI chatbot, CRM pipeline, instant SMS follow-up. Live in 14 days.</p>
+      </div>
+      <div class="roadmap-step reveal">
+        <span class="step-number">03</span>
+        <span class="step-title">Capture</span>
+        <h3 class="step-heading">Book + Qualify</h3>
+        <p class="step-desc">Your AI receptionist qualifies every lead 24/7. Automated follow-up sequences nurture cold leads. Our system books qualified prospects directly into your calendar.</p>
+      </div>
+      <div class="roadmap-step reveal">
+        <span class="step-number">04</span>
+        <span class="step-title">Scale</span>
+        <h3 class="step-heading">Optimise + Grow</h3>
+        <p class="step-desc">Weekly optimisation, bi-weekly strategy calls, monthly performance reviews. We manage and improve your campaigns daily while you focus on closing deals.</p>
+      </div>
+    </div>
+    <div class="btn-wrap">
+      <a href="#book" class="btn-primary">Book A Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- FULL PACKAGE -->
+<section>
+  <div class="container">
+    <div class="package-section reveal">
+      <span class="label">// More Than Marketing</span>
+      <h2>We're the <em>Full Package</em></h2>
+      <p class="package-subhead">Marketing + Sales + Automation</p>
+      <p>Most agencies stop at generating leads. That's why they fail. We build the complete machine: ads, funnels, follow-up, automation, AI chat, CRM, and sales enablement. Everything connected. Everything automated. Everything measurable.</p>
+      <p>It doesn't matter if you're B2B or B2C. We've built a system that fills your calendar with qualified prospects and helps you close them.</p>
+      <div class="btn-wrap">
+        <a href="#book" class="btn-primary">Book A Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS THIS FOR -->
+<section class="who-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// Is This For You?</span>
+      <h2>Who Is <em>This For?</em></h2>
+    </div>
+    <div class="who-content reveal">
+      <p>We work with <strong>established UK service businesses doing £10k+/month</strong> who want a proper marketing and sales engine built and run for them.</p>
+      <p>If you already have clients, deliver a great service, and you're ready to grow <strong>properly</strong> (not dabble), we can help you scale fast without doing all the marketing yourself.</p>
+      <p>You need delivery capacity, some ad budget to invest, and the mindset of <strong>"I want to grow this properly."</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// Meet The Founder</span>
+      <h2>Who <em>Are We?</em></h2>
+    </div>
+    <div class="founder-content reveal">
+      <p>I'm <strong style="color:var(--accent);">Alex Mustatea</strong>, founder of ElevateX Solutions. I've spent years in the trenches of digital marketing.</p>
+      <p>I was Global Marketing Manager at a fintech company managing six-figure monthly ad budgets and leading a team of 10. I've consulted for over 40 UK businesses across fintech, SaaS, dental, legal, construction, trades, recruitment, and more.</p>
+      <p>I built the go-to-market strategy for Athena Edge, a prop trading firm, growing it from zero to a 45,000 person email list and a community of over 5,000.</p>
+      <p>Through all of it, the pattern was the same: businesses wasting money on ads with no system behind them. Leads going cold. Manual follow-up that never happens. Tools that don't talk to each other. That's exactly what ElevateX fixes.</p>
+      <p style="font-family:'Instrument Serif',serif;font-style:italic;font-size:1.4rem;color:var(--accent);text-align:center;margin-top:2rem;">Not another agency. Your growth team.</p>
+      
+      <div class="credentials-row">
+        <div class="credential">
+          <div class="credential-number">40+</div>
+          <div class="credential-label">UK Clients</div>
+        </div>
+        <div class="credential">
+          <div class="credential-number">£2.5M+</div>
+          <div class="credential-label">Ad Spend Managed</div>
+        </div>
+        <div class="credential">
+          <div class="credential-number">45k+</div>
+          <div class="credential-label">Email List Built</div>
+        </div>
+        <div class="credential">
+          <div class="credential-number">10</div>
+          <div class="credential-label">Person Team Led</div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-wrap">
+      <a href="#book" class="btn-primary">Book A Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT WINS -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// Recent Client Wins</span>
+      <h2>Recent <em>Results</em></h2>
+    </div>
+    <ul class="wins-list">
+      <li class="reveal"><strong>247 leads</strong> generated at <strong>£12 each</strong> with a 40% closing rate for a UK construction firm</li>
+      <li class="reveal"><strong>£250,000</strong> added to a recruitment agency's pipeline in 4 months</li>
+      <li class="reveal">First <strong>£100,000 month</strong> for a UK coaching client</li>
+      <li class="reveal"><strong>£23 cost per booking</strong> for an aesthetic clinic (down from £89)</li>
+      <li class="reveal"><strong>312% increase</strong> in dental practice appointments in 90 days</li>
+      <li class="reveal">AI chatbot booked <strong>47 qualified consultations</strong> in month one for a law firm</li>
+      <li class="reveal"><strong>22 hours/week saved</strong> on manual admin for a recruitment business</li>
+      <li class="reveal"><strong>8 meetings booked</strong> in the first 4 weeks for a B2B SaaS startup</li>
+    </ul>
+    <div class="btn-wrap">
+      <a href="#book" class="btn-primary">Book A Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- YOU WANT CLIENTS -->
+<section class="want-clients">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// The Truth About Leads</span>
+      <h2>You want <em>clients</em>, not just "leads"</h2>
+    </div>
+    <div class="want-clients-content reveal">
+      <p>Generating leads is only half the battle. If you're not following up within 5 minutes, you're literally burning money. Studies show leads go cold within <strong style="color:var(--accent);">300 seconds</strong>.</p>
+      <ul class="pain-points">
+        <li>Are you calling every lead in time?</li>
+        <li>Are you juggling follow-ups with running the business?</li>
+        <li>Are competitors stealing deals because you're too slow to respond?</li>
+      </ul>
+      <div class="btn-wrap">
+        <a href="#book" class="btn-primary">Book A Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR YOU / NOT FOR YOU -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// Honest Check</span>
+      <h2>Is This <em>Actually</em> For You?</h2>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-col yes reveal">
+        <h3>This <span class="yes">IS</span> for you if...</h3>
+        <ul>
+          <li><span class="tick">✓</span> You run a UK service business doing £10k+/month</li>
+          <li><span class="tick">✓</span> You want predictable qualified bookings every week</li>
+          <li><span class="tick">✓</span> You're sick of doing all the marketing yourself</li>
+          <li><span class="tick">✓</span> You're ready to invest properly in growth</li>
+          <li><span class="tick">✓</span> You want a team to build AND run your growth engine</li>
+        </ul>
+      </div>
+      <div class="fit-col no reveal">
+        <h3>This is <span class="no">NOT</span> for you if...</h3>
+        <ul>
+          <li><span class="cross">✗</span> You want overnight results or "push-button" magic</li>
+          <li><span class="cross">✗</span> You just want to "buy leads"</li>
+          <li><span class="cross">✗</span> You have zero budget for ads</li>
+          <li><span class="cross">✗</span> You don't have capacity to take on more work</li>
+          <li><span class="cross">✗</span> You need a guaranteed result (run from any agency that promises this)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL ROW 2 -->
+<section class="who-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// More Client Voices</span>
+      <h2>What <em>Our Clients</em> Say</h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote">£90,000 forecasted revenue in our first month with ElevateX.</p>
+        <div class="testimonial-author">UK Service Business</div>
+        <div class="testimonial-role">Founder</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote">Now 2 to 3 months booked in advance. The system never stops.</p>
+        <div class="testimonial-author">UK Trades Business</div>
+        <div class="testimonial-role">Owner</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote">They're passionate, confident, and actually deliver. Game changer.</p>
+        <div class="testimonial-author">Aesthetic Clinic</div>
+        <div class="testimonial-role">Director</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote">Doubled, maybe tripled, our lead flow since starting.</p>
+        <div class="testimonial-author">SaaS Founder</div>
+        <div class="testimonial-role">London</div>
+      </div>
+    </div>
+    <div class="btn-wrap">
+      <a href="#book" class="btn-primary">Book A Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE OFFER -->
+<section class="offer-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// Everything You Get</span>
+      <h2>What We <em>Offer</em></h2>
+    </div>
+    <ul class="offer-list">
+      <li class="reveal">Ads that actually convert (Meta + Google, fully managed)</li>
+      <li class="reveal">Landing pages built to book calls</li>
+      <li class="reveal">Full CRM setup and pipeline management</li>
+      <li class="reveal">Email and SMS automation sequences</li>
+      <li class="reveal">Instant lead follow-up (under 60 seconds)</li>
+      <li class="reveal">AI chatbot that qualifies and books 24/7</li>
+      <li class="reveal">Missed call text-back automation</li>
+      <li class="reveal">Review request automation</li>
+      <li class="reveal">Weekly reporting dashboard</li>
+      <li class="reveal">Bi-weekly strategy calls with Alex directly</li>
+      <li class="reveal">Dedicated Slack channel for instant communication</li>
+    </ul>
+    <div class="btn-wrap">
+      <a href="#book" class="btn-primary">Book A Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- AGENCIES SUCK -->
+<section class="agencies-suck">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// Let's Be Honest</span>
+      <h2>Most Agencies <em>Suck</em>. Let's Be Honest.</h2>
+    </div>
+    <div class="agencies-suck-content reveal">
+      <div class="fake-promises">
+        <div class="fake-promise">"10x your revenue in 30 days!"</div>
+        <div class="fake-promise">"1,000 leads guaranteed!"</div>
+        <div class="fake-promise">"£1 ads that print money!"</div>
+      </div>
+      <p style="font-size:1.1rem;color:var(--text);margin-bottom:2rem;">Let's be honest, it's all bullshit. If someone's promising results that sound too good to be true, our advice is to run a mile.</p>
+      <p style="color:var(--accent);font-family:'Instrument Serif',serif;font-size:1.4rem;font-style:italic;">We don't make wild guarantees. We let our track record speak:</p>
+      
+      <ul class="truth-list">
+        <li><strong>£2.5M+</strong> in UK ad spend managed</li>
+        <li><strong>40+</strong> UK businesses served across 14 industries</li>
+        <li><strong>45,000+</strong> email list built from zero for one client</li>
+        <li>Generated <strong>£2M+</strong> in new revenue for clients last year</li>
+        <li>Average client <strong>ROAS of 3.8x</strong></li>
+      </ul>
+      <p style="color:var(--text-muted);font-size:0.95rem;margin-top:2rem;">Our results are on this page because we believe in transparency.</p>
+      <div class="btn-wrap">
+        <a href="#book" class="btn-primary">Book A Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY TRUST US -->
+<section class="who-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">// Credibility</span>
+      <h2>Why <em>Trust Us?</em></h2>
+    </div>
+    <div class="who-content reveal">
+      <p>We've built businesses. Scaled them. Managed six-figure ad budgets. Led teams. Launched brands. And now we're here to help you do the same.</p>
+      <p>We don't just dabble in sales and marketing, we <strong>live and breathe it.</strong></p>
+      <p>And unlike the "gurus" on Instagram, we've actually done this before, building systems and strategies that stand the test of time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="book">
+  <div class="booking-container">
+    <div class="booking-header">
+      <span class="label">// Book Your Call</span>
+      <h2>Book Your Free <em>Strategy Call</em></h2>
+      <p style="color:var(--text-muted);max-width:600px;margin:1rem auto 0;font-size:1.05rem;">30 minutes. Zero pressure. We'll audit your business, map the gaps, and build you a custom growth plan.</p>
+    </div>
+    <div class="cal-embed">
+      <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-v2"></div>
+      <script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "strategy-v2", {origin:"https://app.cal.com"});
+        Cal.ns["strategy-v2"]("inline", {
+          elementOrSelector:"#my-cal-inline-v2",
+          config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+          calLink: "elavatewithalex/free-strategy-call",
+        });
+        Cal.ns["strategy-v2"]("ui", {"theme":"dark","hideEventTypeDetails":false,"layout":"month_view"});
+      </script>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">Elevate<span>X</span></div>
+  <p class="footer-text">© 2026 ElevateX Solutions Ltd. All rights reserved.</p>
+  <p class="footer-text">Registered in England & Wales.</p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/services.html">Services</a>
+    <a href="mailto:alex@elevatexsolutions.co.uk">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+</footer>
+
+<!-- SCROLL REVEAL SCRIPT -->
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  // Fire Schedule event when Cal.com embed is interacted with
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'CAL:booking:successful') {
+      if (window.fbq) {
+        fbq('track', 'Schedule');
+        fbq('track', 'Lead', { value: 1997, currency: 'GBP' });
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
