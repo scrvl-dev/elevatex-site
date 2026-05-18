@@ -1,0 +1,11 @@
+# elevatexsolutions.co.uk
+
+User-agent: *
+Allow: /
+
+# Allow lead magnets to be discovered but not over-indexed
+User-agent: *
+Disallow: /assets/magnets/
+
+# Sitemap
+Sitemap: https://elevatexsolutions.co.uk/sitemap.xml
