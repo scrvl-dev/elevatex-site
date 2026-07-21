@@ -2,10 +2,45 @@
 
 User-agent: *
 Allow: /
-
-# Allow lead magnets to be discovered but not over-indexed
-User-agent: *
+# Gated PDFs — reachable, but shouldn't compete in the index with the pages
 Disallow: /assets/magnets/
 
-# Sitemap
+# --- AI / answer engines -------------------------------------------------
+# Being cited in ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews is
+# a discovery channel, so these are explicitly allowed. /llms.txt holds a clean,
+# structured summary written for machine readers.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://elevatexsolutions.co.uk/sitemap.xml

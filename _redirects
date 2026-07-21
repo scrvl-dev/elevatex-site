@@ -1,0 +1,9 @@
+# Retired pages from the pre-2026 site — 301 so no inbound link or indexed URL 404s.
+/services.html      /#menu    301
+/services2.html     /#menu    301
+/qualify.html       /         301
+/welcome.html       /         301
+/SETUP-GUIDE.html   /         301
+
+# Legacy lead-magnet path safety net
+/magnets/*          /assets/magnets/:splat   301
