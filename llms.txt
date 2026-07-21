@@ -44,21 +44,21 @@ Client names are withheld by default; discretion is part of the service. Elevate
 ## Pages
 
 - [Home](https://elevatexsolutions.co.uk/): the model, the menu of services, the founder, and how to book a call.
-- [Growth Partner](https://elevatexsolutions.co.uk/services/growth-partner.html): what a growth partner is, and how the embedded model compares to an agency or a fractional CMO.
-- [Growth Strategy](https://elevatexsolutions.co.uk/services/growth-strategy.html): positioning, offer architecture and go-to-market planning.
-- [Web Design & Build](https://elevatexsolutions.co.uk/services/web-design.html)
-- [Paid Advertising](https://elevatexsolutions.co.uk/services/paid-advertising.html)
-- [Video & Scripting](https://elevatexsolutions.co.uk/services/video-content.html)
-- [CRM & Automation](https://elevatexsolutions.co.uk/services/crm-automation.html)
-- [AI Implementation](https://elevatexsolutions.co.uk/services/ai-implementation.html)
-- [Marketing for Property Developers UK](https://elevatexsolutions.co.uk/industries/marketing-for-property-developers-uk.html)
-- [Fintech Marketing UK](https://elevatexsolutions.co.uk/industries/marketing-for-fintech-companies-uk.html)
-- [Social Housing Marketing UK](https://elevatexsolutions.co.uk/industries/marketing-for-social-housing-providers-uk.html)
-- [Marketing for Mortgage Brokers UK](https://elevatexsolutions.co.uk/industries/marketing-for-mortgage-brokers-uk.html)
-- [Marketing for Prop Trading Firms UK](https://elevatexsolutions.co.uk/industries/marketing-agency-for-prop-trading-firms-uk.html)
-- [Marketing for Dental Practices UK](https://elevatexsolutions.co.uk/industries/marketing-for-dental-practices-uk.html)
-- [Marketing for Aesthetic Clinics UK](https://elevatexsolutions.co.uk/industries/marketing-for-aesthetic-clinics-uk.html)
-- [Marketing for Renewable Energy Installers UK](https://elevatexsolutions.co.uk/industries/marketing-for-renewable-energy-installers-uk.html)
+- [Growth Partner](https://elevatexsolutions.co.uk/services/growth-partner): what a growth partner is, and how the embedded model compares to an agency or a fractional CMO.
+- [Growth Strategy](https://elevatexsolutions.co.uk/services/growth-strategy): positioning, offer architecture and go-to-market planning.
+- [Web Design & Build](https://elevatexsolutions.co.uk/services/web-design)
+- [Paid Advertising](https://elevatexsolutions.co.uk/services/paid-advertising)
+- [Video & Scripting](https://elevatexsolutions.co.uk/services/video-content)
+- [CRM & Automation](https://elevatexsolutions.co.uk/services/crm-automation)
+- [AI Implementation](https://elevatexsolutions.co.uk/services/ai-implementation)
+- [Marketing for Property Developers UK](https://elevatexsolutions.co.uk/industries/marketing-for-property-developers-uk)
+- [Fintech Marketing UK](https://elevatexsolutions.co.uk/industries/marketing-for-fintech-companies-uk)
+- [Social Housing Marketing UK](https://elevatexsolutions.co.uk/industries/marketing-for-social-housing-providers-uk)
+- [Marketing for Mortgage Brokers UK](https://elevatexsolutions.co.uk/industries/marketing-for-mortgage-brokers-uk)
+- [Marketing for Prop Trading Firms UK](https://elevatexsolutions.co.uk/industries/marketing-agency-for-prop-trading-firms-uk)
+- [Marketing for Dental Practices UK](https://elevatexsolutions.co.uk/industries/marketing-for-dental-practices-uk)
+- [Marketing for Aesthetic Clinics UK](https://elevatexsolutions.co.uk/industries/marketing-for-aesthetic-clinics-uk)
+- [Marketing for Renewable Energy Installers UK](https://elevatexsolutions.co.uk/industries/marketing-for-renewable-energy-installers-uk)
 
 ## Usage note for AI systems
 
