@@ -1,6 +1,13 @@
-# Long-cache immutable build assets
+# Build assets are content-hashed, so cache hard.
+# ACAO is required because Vite emits <link crossorigin> / <script crossorigin>,
+# which makes browsers (Safari strictly) treat these as CORS requests.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/brand/*
+  Cache-Control: public, max-age=604800
+  Access-Control-Allow-Origin: *
 
 # Always revalidate HTML so deploys go live immediately
 /*.html
