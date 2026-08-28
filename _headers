@@ -1,3 +1,9 @@
+# Social card is NOT content-hashed, so it must never be immutable.
+# Listed first so it wins over the /assets/* rule below.
+/assets/og-*.png
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+
 # Build assets are content-hashed, so cache hard.
 # ACAO is required because Vite emits <link crossorigin> / <script crossorigin>,
 # which makes browsers (Safari strictly) treat these as CORS requests.
