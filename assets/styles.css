@@ -36,8 +36,8 @@
   --lime-glow: var(--gold-glow);
 
   --f-serif: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
-  --f-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --f-label: 'Jost', 'Montserrat', 'Inter', sans-serif;
+  --f-sans: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --f-label: 'Jost', 'Montserrat', sans-serif;
   --f-mono: var(--f-label);
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
