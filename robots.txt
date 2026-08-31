@@ -2,7 +2,7 @@
 
 User-agent: *
 Allow: /
-# Gated PDFs — reachable, but shouldn't compete in the index with the pages
+# Gated PDFs: reachable, but shouldn't compete in the index with the pages
 Disallow: /assets/magnets/
 
 # --- AI / answer engines -------------------------------------------------
