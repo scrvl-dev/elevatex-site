@@ -61,8 +61,13 @@
           if (!o || typeof o !== 'object' || typeof o.event !== 'string') return;
           var name = MAP[o.event];
           if (!name || typeof gtag !== 'function') return;
+          // GTM re-enters dataLayer.push while processing, so the same object can
+          // reach us twice. Mark it, or every conversion is counted double.
+          if (o.__exFwd) return;
+          try { Object.defineProperty(o, '__exFwd', { value: true, enumerable: false }); }
+          catch (e) { o.__exFwd = true; }
           var params = {};
-          for (var k in o) { if (k !== 'event' && Object.prototype.hasOwnProperty.call(o, k)) params[k] = o[k]; }
+          for (var k in o) { if (k !== 'event' && k !== '__exFwd' && Object.prototype.hasOwnProperty.call(o, k)) params[k] = o[k]; }
           if (name === 'generate_lead') { params.currency = 'GBP'; params.value = 25.0; }
           gtag('event', name, params);
         } catch (e) {}
