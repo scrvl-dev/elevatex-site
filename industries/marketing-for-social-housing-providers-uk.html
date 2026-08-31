@@ -35,6 +35,35 @@
   gtag('js', new Date());
   gtag('config', 'G-5FRFN94ZKP');
 </script>
+<!-- GA4 bridge. The GTM container is empty, so dataLayer events reach nothing.
+     This forwards the site's existing conversion events to GA4 via gtag. Remove it
+     if a GA4 tag is ever configured inside GTM, or every conversion double counts. -->
+<script>
+(function(){
+  var MAP = {
+    cta_click: 'cta_click', booking_click: 'cta_click',
+    magnet_download: 'generate_lead', lead_magnet: 'generate_lead',
+    enquiry_submit: 'generate_lead'
+  };
+  function forward(o){
+    try {
+      if (!o || typeof o !== 'object' || typeof o.event !== 'string') return;
+      var name = MAP[o.event];
+      if (!name || typeof gtag !== 'function') return;
+      var params = {};
+      for (var k in o) { if (k !== 'event' && Object.prototype.hasOwnProperty.call(o, k)) params[k] = o[k]; }
+      if (name === 'generate_lead') { params.currency = 'GBP'; params.value = 25.0; }
+      gtag('event', name, params);
+    } catch (e) {}
+  }
+  var dl = window.dataLayer = window.dataLayer || [];
+  var push = dl.push;
+  dl.push = function(){
+    for (var i = 0; i < arguments.length; i++) forward(arguments[i]);
+    return push.apply(dl, arguments);
+  };
+})();
+</script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MKTZX6BM');</script>
 
 <!-- Meta Pixel -->
