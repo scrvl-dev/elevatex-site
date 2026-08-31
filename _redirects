@@ -7,3 +7,8 @@
 
 # Legacy lead-magnet path safety net
 /magnets/*          /assets/magnets/:splat   301
+
+# Section URLs have no index page and were returning the SPA shell as a
+# soft 404. Send them to the menu on the homepage instead.
+/services/          /#menu    301
+/industries/        /#menu    301
