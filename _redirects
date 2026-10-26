@@ -12,3 +12,10 @@
 # soft 404. Send them to the menu on the homepage instead.
 /services/          /#menu    301
 /industries/        /#menu    301
+
+# Duplicate homepage URLs flagged in the Oct 2026 on page report.
+# Without these they served the homepage with a 200 (duplicate content).
+/home               /         301
+/home.html          /         301
+/home.php           /         301
+/index.php          /         301
