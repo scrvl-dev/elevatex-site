@@ -44,6 +44,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const email = (data.email || '').trim()
   const company = (data.company || '').trim()
   const message = (data.message || '').trim()
+  const page = (data.page || '').trim().slice(0, 200)
 
   if (!email.includes('@') || !name) {
     return json({ ok: false, error: 'Name and a valid email are required' }, 400)
@@ -56,7 +57,9 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     source: 'ElevateX Website — Enquiry Form',
     tags: ['website-enquiry', 'website-lead'],
     customField: {
-      lead_source_detail: 'Landing page enquiry form (not ready to book)',
+      lead_source_detail: page
+        ? `Enquiry form on ${page}`
+        : 'Landing page enquiry form (not ready to book)',
       enquiry_message: message,
       company: company,
     },
