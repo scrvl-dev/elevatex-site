@@ -136,11 +136,10 @@ ol li b{color:var(--ink);font-weight:500;display:block}
   <div class="card">
     <div class="seal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
 
-    <!-- Personal video from Alex. Shown only once a file exists at the src below.
-         Ship new cuts under a NEW filename in /media/ (never /assets/, which is cached immutably). -->
-    <figure class="vid" id="vid" hidden><video controls playsinline preload="metadata" data-src=""></video></figure>
-
     <section data-type="call">
+      <!-- Video from Alex for this variant. Set data-src to a file under /media/ with a NEW filename
+           (never /assets/, which is cached immutably). Hidden until the file loads. -->
+      <figure class="vid" hidden><video controls playsinline preload="metadata" data-src=""></video></figure>
       <span class="eyebrow">Call booked</span>
       <h1>You're in the diary.<br><em>Thank you.</em></h1>
       <p class="lede">Your strategy call is confirmed. Alex runs every call himself, so you'll be talking to the person who does the work.</p>
@@ -154,6 +153,9 @@ ol li b{color:var(--ink);font-weight:500;display:block}
     </section>
 
     <section data-type="enquiry" hidden>
+      <!-- Video from Alex for this variant. Set data-src to a file under /media/ with a NEW filename
+           (never /assets/, which is cached immutably). Hidden until the file loads. -->
+      <figure class="vid" hidden><video controls playsinline preload="metadata" data-src=""></video></figure>
       <span class="eyebrow">Message received</span>
       <h1>That has landed.<br><em>Thank you.</em></h1>
       <p class="lede">Alex reads every enquiry himself and will come back to you personally, usually the same working day.</p>
@@ -164,13 +166,31 @@ ol li b{color:var(--ink);font-weight:500;display:block}
       <a class="btn" id="book-now" href="https://cal.com/elavatewithalex/free-strategy-call?utm_source=elevatex-site&amp;utm_medium=thank-you&amp;utm_campaign=growth-partners&amp;utm_content=after-enquiry" target="_blank" rel="noopener">Book a strategy call <span aria-hidden="true">→</span></a>
       <span class="alt">Or head <a href="/">back to the homepage</a>.</span>
     </section>
+
+    <section data-type="apply" hidden>
+      <!-- Video from Alex for this variant. Set data-src to a file under /media/ with a NEW filename
+           (never /assets/, which is cached immutably). Hidden until the file loads. -->
+      <figure class="vid" hidden><video controls playsinline preload="metadata" data-src=""></video></figure>
+      <span class="eyebrow">Application received</span>
+      <h1>You're on the list.<br><em>Book your call now.</em></h1>
+      <p class="lede">Alex reviews every application himself, usually the same day. The fastest way forward is to lock in your 30 minute call now.</p>
+      <ol>
+        <li><span><b>Book your call below</b>Thirty minutes with Alex. No juniors, no pitch deck.</span></li>
+        <li><span><b>Bring three things</b>What you spend on ads, what you sell and for how much, and screenshots of anything the platforms have rejected.</span></li>
+        <li><span><b>Get a straight answer</b>Whether we can get your ads running and selling. If we can't, you'll still leave knowing what's blocking you.</span></li>
+      </ol>
+      <a class="btn" id="book-apply" href="https://cal.com/elavatewithalex/free-strategy-call?utm_source=elevatex-site&amp;utm_medium=thank-you&amp;utm_campaign=ads-relaunch&amp;utm_content=after-application" target="_blank" rel="noopener">Book my call <span aria-hidden="true">→</span></a>
+      <span class="alt">Prefer email? Reply to the confirmation and it reaches Alex directly.</span>
+    </section>
   </div>
 </main>
 <script>
 (function(){
-  var type=new URLSearchParams(location.search).get('type')==='enquiry'?'enquiry':'call';
+  var q=new URLSearchParams(location.search).get('type');
+  var type=(q==='enquiry'||q==='apply')?q:'call';
   document.querySelectorAll('[data-type]').forEach(function(s){s.hidden=s.getAttribute('data-type')!==type});
   if(type==='enquiry'){document.title='Message received | ElevateX Growth Partners';}
+  else if(type==='apply'){document.title='Application received | ElevateX Growth Partners';}
   else{
     document.title='Call booked | ElevateX Growth Partners';
     /* Cal.com redirects here after a booking. Count it once per browser session so a refresh never double counts. */
@@ -180,13 +200,13 @@ ol li b{color:var(--ink);font-weight:500;display:block}
       window.fbq&&fbq('track','Schedule',{content_name:'strategy-call'});
     }catch(e){}}
   }
-  var v=document.querySelector('#vid video');
-  if(v&&v.dataset.src){v.addEventListener('loadedmetadata',function(){document.getElementById('vid').hidden=false});v.src=v.dataset.src;}
-  var b=document.getElementById('book-now');
+  var sec=document.querySelector('[data-type="'+type+'"]'),v=sec&&sec.querySelector('video');
+  if(v&&v.dataset.src){v.addEventListener('loadedmetadata',function(){v.parentNode.hidden=false});v.src=v.dataset.src;}
+  ['book-now','book-apply'].forEach(function(id){var b=document.getElementById(id);
   b&&b.addEventListener('click',function(){try{
     window.gtag&&gtag('event','booking_click',{cta_location:'thank-you'});
     window.fbq&&fbq('track','InitiateCheckout',{content_name:'book-a-call:thank-you',content_category:'booking'});
-  }catch(e){}});
+  }catch(e){}})});
 })();
 </script>
 </body>

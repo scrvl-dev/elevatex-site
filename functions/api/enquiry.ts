@@ -45,6 +45,19 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const company = (data.company || '').trim()
   const message = (data.message || '').trim()
   const page = (data.page || '').trim().slice(0, 200)
+  // The /ads application sends campaign and qualifying fields; fold them into
+  // the CRM message and tag so they can be routed separately.
+  const rawCampaign = (data.campaign || '').trim().slice(0, 60)
+  const campaign = /^[a-z0-9-]+$/.test(rawCampaign) ? rawCampaign : ''
+  const extras = [
+    ['Website', data.website],
+    ['Category', data.category],
+    ['Monthly revenue', data.revenue],
+    ['Ads status', data.ad_status],
+  ]
+    .filter(([, v]) => v && String(v).trim())
+    .map(([k, v]) => `${k}: ${String(v).trim().slice(0, 200)}`)
+  const fullMessage = [...extras, message].filter(Boolean).join('\n')
 
   if (!email.includes('@') || !name) {
     return json({ ok: false, error: 'Name and a valid email are required' }, 400)
@@ -55,15 +68,15 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     firstName: name,
     companyName: company || undefined,
     source: 'ElevateX Website — Enquiry Form',
-    tags: ['website-enquiry', 'website-lead'],
+    tags: ['website-enquiry', 'website-lead', ...(campaign ? [campaign] : [])],
     customField: {
       lead_source_detail: page
         ? `Enquiry form on ${page}`
         : 'Landing page enquiry form (not ready to book)',
-      enquiry_message: message,
+      enquiry_message: fullMessage,
       company: company,
     },
-    message,
+    message: fullMessage,
   }
 
   try {
