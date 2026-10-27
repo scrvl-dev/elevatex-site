@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en-GB" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank you | ElevateX Growth Partners</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/brand/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Tag Manager (carries GA4 inside the container) -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FRFN94ZKP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5FRFN94ZKP');
+    </script>
+        <!-- GA4 bridge. The GTM container is empty, so dataLayer events reach nothing.
+         This forwards the site's conversion events to GA4 via gtag. gtm.js replaces
+         dataLayer.push when it loads, which discards any wrapper installed before it,
+         so the wrapper reinstalls itself for the first few seconds until GTM settles.
+         Remove this if a GA4 tag is ever configured inside GTM, or conversions double count. -->
+    <script>
+    (function(){
+      var MAP = {
+        cta_click: 'cta_click', booking_click: 'cta_click',
+        magnet_download: 'generate_lead', lead_magnet: 'generate_lead',
+        enquiry_submit: 'generate_lead'
+      };
+      var seen = 0;
+      function forward(o){
+        try {
+          if (!o || typeof o !== 'object' || typeof o.event !== 'string') return;
+          var name = MAP[o.event];
+          if (!name || typeof gtag !== 'function') return;
+          // GTM re-enters dataLayer.push while processing, so the same object can
+          // reach us twice. Mark it, or every conversion is counted double.
+          if (o.__exFwd) return;
+          try { Object.defineProperty(o, '__exFwd', { value: true, enumerable: false }); }
+          catch (e) { o.__exFwd = true; }
+          var params = {};
+          for (var k in o) { if (k !== 'event' && k !== '__exFwd' && Object.prototype.hasOwnProperty.call(o, k)) params[k] = o[k]; }
+          if (name === 'generate_lead') { params.currency = 'GBP'; params.value = 25.0; }
+          gtag('event', name, params);
+        } catch (e) {}
+      }
+      function install(){
+        var dl = window.dataLayer = window.dataLayer || [];
+        if (dl.push && dl.push.__exBridge) return;
+        var prev = dl.push;
+        function wrapped(){
+          for (var i = 0; i < arguments.length; i++) forward(arguments[i]);
+          return prev.apply(dl, arguments);
+        }
+        wrapped.__exBridge = true;
+        dl.push = wrapped;
+      }
+      install();
+      var tries = 0;
+      var timer = setInterval(function(){ install(); if (++tries > 30) clearInterval(timer); }, 400);
+    })();
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MKTZX6BM');</script>
+
+    <!-- Meta Pixel -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1639910097054373');
+    fbq('track', 'PageView');
+    </script>
+<script>
+(function(){var t='system';try{t=localStorage.getItem('ex-theme')||'system'}catch(e){}
+var d=t==='system'?(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):t;
+document.documentElement.setAttribute('data-theme',d);})();
+</script>
+<style>
+:root{
+  --gold:#c8a86a; --gold-ink:#c8a86a; --gold-soft:rgba(200,168,106,.14);
+  --bg:#100f0b; --ink:#ede6d6; --ink-2:rgba(237,230,214,.72); --mute:rgba(237,230,214,.46);
+  --line-2:rgba(237,230,214,.14); --card:rgba(30,27,20,.62); --card-hi:rgba(255,248,230,.06);
+  --grid:rgba(200,168,106,.07); --shadow:0 30px 80px -30px rgba(0,0,0,.7);
+  --btn:#ede6d6; --btn-ink:#100f0b;
+}
+:root[data-theme="light"]{
+  --gold-ink:#8a6a2e; --gold-soft:rgba(200,168,106,.18);
+  --bg:#f2ece0; --ink:#100f0b; --ink-2:rgba(16,15,11,.74); --mute:rgba(16,15,11,.5);
+  --line-2:rgba(16,15,11,.14); --card:rgba(255,252,244,.66); --card-hi:rgba(255,255,255,.7);
+  --grid:rgba(16,15,11,.055); --shadow:0 30px 70px -34px rgba(60,45,20,.35);
+  --btn:#100f0b; --btn-ink:#ede6d6;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:"Jost",system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:76px 76px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 25%,transparent 80%);mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 25%,transparent 80%)}
+a{color:inherit;text-decoration:none}
+header{padding:22px 24px;position:relative}
+.logo img{height:30px;width:auto;display:block}
+.logo .l-light{display:none}
+[data-theme="light"] .logo .l-dark{display:none}
+[data-theme="light"] .logo .l-light{display:block}
+main{flex:1;display:grid;place-items:center;padding:24px 16px 64px;position:relative}
+.card{width:100%;max-width:720px;padding:52px 52px 44px;border-radius:28px;background:var(--card);border:1px solid var(--line-2);backdrop-filter:blur(22px) saturate(1.2);-webkit-backdrop-filter:blur(22px) saturate(1.2);box-shadow:var(--shadow),inset 0 1px 0 var(--card-hi);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--gold)}
+.seal{width:64px;height:64px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;box-shadow:0 0 0 8px var(--gold-soft);margin-bottom:30px}
+.seal svg{width:26px;height:26px;stroke:var(--gold-ink);stroke-dasharray:30;stroke-dashoffset:30;animation:draw .9s cubic-bezier(.2,.8,.2,1) .25s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);font-weight:500}
+h1{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:clamp(34px,5.2vw,50px);line-height:1.02;letter-spacing:-.01em;margin:14px 0 18px}
+h1 em{font-style:italic;color:var(--gold-ink)}
+.lede{color:var(--ink-2);font-size:18.5px;margin:0 0 34px;max-width:540px}
+ol{list-style:none;padding:0;margin:0 0 38px;display:grid;gap:18px;counter-reset:s}
+ol li{display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;color:var(--ink-2);counter-increment:s}
+ol li::before{content:counter(s);width:34px;height:34px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;font-size:14px;color:var(--gold-ink);font-weight:500}
+ol li b{color:var(--ink);font-weight:500;display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 26px;border-radius:14px;font-weight:500;font-size:15.5px;background:var(--btn);color:var(--btn-ink);box-shadow:0 10px 30px -12px rgba(200,168,106,.55);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.btn:hover{transform:translateY(-2px)}
+.alt{display:block;margin-top:18px;font-size:15px;color:var(--mute)}
+.alt a{color:var(--ink);border-bottom:1px solid var(--gold)}
+[hidden]{display:none!important}
+.vid{margin:0 0 34px;border-radius:18px;overflow:hidden;border:1px solid var(--line-2);background:#000;aspect-ratio:16/9}
+.vid video{width:100%;height:100%;display:block;object-fit:cover}
+@media (max-width:600px){.card{padding:36px 24px 32px;border-radius:24px}.btn{width:100%}}
+@media (prefers-reduced-motion:reduce){.seal svg{animation:none;stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/" aria-label="ElevateX Growth Partners home">
+    <img class="l-dark" src="/brand/nav-lockup.png" alt="ElevateX">
+    <img class="l-light" src="/brand/nav-lockup-dark.png" alt="ElevateX">
+  </a>
+</header>
+<main>
+  <div class="card">
+    <div class="seal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+
+    <!-- Personal video from Alex. Shown only once a file exists at the src below.
+         Ship new cuts under a NEW filename in /media/ (never /assets/, which is cached immutably). -->
+    <figure class="vid" id="vid" hidden><video controls playsinline preload="metadata" data-src=""></video></figure>
+
+    <section data-type="call">
+      <span class="eyebrow">Call booked</span>
+      <h1>You're in the diary.<br><em>Thank you.</em></h1>
+      <p class="lede">Your strategy call is confirmed. Alex runs every call himself, so you'll be talking to the person who does the work.</p>
+      <ol>
+        <li><span><b>Check your inbox</b>The calendar invite and video link are on their way. If you don't see them, check your spam folder.</span></li>
+        <li><span><b>Bring your numbers</b>Roughly how many enquiries you get a month, how many turn into customers, and what a customer is worth. Ballpark is fine.</span></li>
+        <li><span><b>Get a straight answer</b>Thirty minutes is enough to tell whether we can move the number. If we can't, we'll say so on the call.</span></li>
+      </ol>
+      <a class="btn" href="/">Back to the homepage</a>
+      <span class="alt">Need to move it? Use the reschedule link in your confirmation email.</span>
+    </section>
+
+    <section data-type="enquiry" hidden>
+      <span class="eyebrow">Message received</span>
+      <h1>That has landed.<br><em>Thank you.</em></h1>
+      <p class="lede">Alex reads every enquiry himself and will come back to you personally, usually the same working day.</p>
+      <ol>
+        <li><span><b>Watch your inbox</b>The reply comes from alex@elevatexsolutions.co.uk. Check spam if it hasn't arrived by tomorrow.</span></li>
+        <li><span><b>Skip the back and forth</b>If you'd rather talk it through, book thirty minutes now and bring your numbers.</span></li>
+      </ol>
+      <a class="btn" id="book-now" href="https://cal.com/elavatewithalex/free-strategy-call?utm_source=elevatex-site&amp;utm_medium=thank-you&amp;utm_campaign=growth-partners&amp;utm_content=after-enquiry" target="_blank" rel="noopener">Book a strategy call <span aria-hidden="true">→</span></a>
+      <span class="alt">Or head <a href="/">back to the homepage</a>.</span>
+    </section>
+  </div>
+</main>
+<script>
+(function(){
+  var type=new URLSearchParams(location.search).get('type')==='enquiry'?'enquiry':'call';
+  document.querySelectorAll('[data-type]').forEach(function(s){s.hidden=s.getAttribute('data-type')!==type});
+  if(type==='enquiry'){document.title='Message received | ElevateX Growth Partners';}
+  else{
+    document.title='Call booked | ElevateX Growth Partners';
+    /* Cal.com redirects here after a booking. Count it once per browser session so a refresh never double counts. */
+    var k='ex-booked';var seen=false;try{seen=sessionStorage.getItem(k)==='1';sessionStorage.setItem(k,'1')}catch(e){}
+    if(!seen){try{
+      window.gtag&&gtag('event','generate_lead',{lead_source:'cal_booking',currency:'GBP',value:25});
+      window.fbq&&fbq('track','Schedule',{content_name:'strategy-call'});
+    }catch(e){}}
+  }
+  var v=document.querySelector('#vid video');
+  if(v&&v.dataset.src){v.addEventListener('loadedmetadata',function(){document.getElementById('vid').hidden=false});v.src=v.dataset.src;}
+  var b=document.getElementById('book-now');
+  b&&b.addEventListener('click',function(){try{
+    window.gtag&&gtag('event','booking_click',{cta_location:'thank-you'});
+    window.fbq&&fbq('track','InitiateCheckout',{content_name:'book-a-call:thank-you',content_category:'booking'});
+  }catch(e){}});
+})();
+</script>
+</body>
+</html>

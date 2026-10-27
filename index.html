@@ -1069,7 +1069,8 @@ const ef=document.getElementById('enquiry-form');
 if(ef){const st=document.getElementById('ef-status'),btn=ef.querySelector('button[type=submit]');
   const enc=d=>Object.keys(d).map(k=>encodeURIComponent(k)+'='+encodeURIComponent(d[k])).join('&');
   function done(){try{(window.dataLayer=window.dataLayer||[]).push({event:'enquiry_submit',form_name:'enquiry',page_location:location.href});window.fbq&&fbq('track','Lead',{content_name:'enquiry-form',content_category:'enquiry'})}catch(e){}
-    ef.innerHTML='<p class="ef-done-t">Thanks, that has landed.</p><p class="ef-done-p">Alex will come back to you personally, usually the same working day.</p>';ef.classList.add('done')}
+    ef.innerHTML='<p class="ef-done-t">Thanks, that has landed.</p><p class="ef-done-p">Alex will come back to you personally, usually the same working day.</p>';ef.classList.add('done');
+    setTimeout(()=>{location.href='/thank-you?type=enquiry'},600)}
   ef.addEventListener('submit',async e=>{e.preventDefault();btn.disabled=true;btn.textContent='Sending…';st.textContent='';
     const p={'form-name':'enquiry'};new FormData(ef).forEach((v,k)=>p[k]=String(v));
     try{const r=await fetch('/api/enquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)});
