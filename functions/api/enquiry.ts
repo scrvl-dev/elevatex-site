@@ -146,9 +146,12 @@ async function forward(
     emailAlex(env, payload),
   ]
   const results = await Promise.allSettled(sends)
+  const okAt = results.map((r) => r.status === 'fulfilled' && r.value === true)
+  // Which destinations took it (GHL hooks in order, then email), for debugging.
+  const delivered = { crm: okAt.slice(0, -1).filter(Boolean).length, email: okAt[okAt.length - 1] }
   // The lead is safe as long as one destination took it.
-  if (results.some((r) => r.status === 'fulfilled' && r.value)) return json({ ok: true })
-  return json({ ok: false, error: 'Could not deliver the submission' }, 502)
+  if (okAt.some(Boolean)) return json({ ok: true, delivered })
+  return json({ ok: false, error: 'Could not deliver the submission', delivered }, 502)
 }
 
 
