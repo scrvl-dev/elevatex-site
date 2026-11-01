@@ -11,7 +11,7 @@
  */
 
 const GHL_FALLBACK =
-  'https://services.leadconnectorhq.com/hooks/qVufP0lhSYGIZE0j9nRm/webhook-trigger/5564b2a5-0839-44ec-b96d-5d8105eff695'
+  'https://services.leadconnectorhq.com/hooks/IyTdSIf5Wpb5miDIfc9E/webhook-trigger/f001a49a-14b3-43a8-b888-9efd1ad65df1'
 
 interface Env {
   GHL_WEBHOOK_URL?: string
