@@ -19,6 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/chrome-20261027.css">
+<script src="/assets/notify-20261101.js"></script>
     <!-- Google Tag Manager (carries GA4 inside the container) -->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FRFN94ZKP"></script>
@@ -553,6 +554,8 @@ document.querySelectorAll('[data-cta]').forEach(function(el){el.addEventListener
   var st=f.querySelector('.status'),btn=f.querySelector('button[type=submit]'),label=btn.innerHTML;
   f.addEventListener('submit',function(e){e.preventDefault();btn.disabled=true;btn.textContent='Sending…';st.textContent='';
     var p={'form-name':'ads-relaunch',page:location.pathname};new FormData(f).forEach(function(v,k){p[k]=String(v)});
+    window.exNotify&&exNotify({form:'Ads relaunch application',name:p.name,email:p.email,company:p.company,
+      details:['Website: '+p.website,'Category: '+p.category,'Monthly revenue: '+p.revenue,'Ads status: '+p.ad_status,p.message||''].join('\n')});
     fetch('/api/enquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)})
       .then(function(r){if(!r.ok)throw 0;
         try{(window.dataLayer=window.dataLayer||[]).push({event:'enquiry_submit',form_name:'ads-relaunch',page_location:location.href});

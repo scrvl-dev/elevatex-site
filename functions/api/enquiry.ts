@@ -6,11 +6,11 @@
  * it lands in the same pipeline as the lead-magnet downloads and triggers the
  * existing instant-reply / nurture automation.
  *
- * Every submission is also emailed to NOTIFY_EMAIL through FormSubmit, so a
- * lead reaches Alex's inbox even if GHL is down or misconfigured.
+ * The email copy to Alex is sent from the browser (assets/notify-*.js), because
+ * FormSubmit blocks requests from Cloudflare's servers.
  *
- * Set GHL_WEBHOOK_URL (comma separated for several) or NOTIFY_EMAIL as
- * environment variables in the Cloudflare Pages project to override these.
+ * Set GHL_WEBHOOK_URL (comma separated for several) as an environment variable
+ * in the Cloudflare Pages project to override the webhooks below.
  */
 
 // The older GHL account that has always received website leads, plus the new
@@ -19,11 +19,9 @@ const GHL_FALLBACK = [
   'https://services.leadconnectorhq.com/hooks/IyTdSIf5Wpb5miDIfc9E/webhook-trigger/f001a49a-14b3-43a8-b888-9efd1ad65df1',
   'https://services.leadconnectorhq.com/hooks/qVufP0lhSYGIZE0j9nRm/webhook-trigger/5564b2a5-0839-44ec-b96d-5d8105eff695',
 ]
-const NOTIFY_FALLBACK = 'alex@elevatexsolutions.co.uk'
 
 interface Env {
   GHL_WEBHOOK_URL?: string
-  NOTIFY_EMAIL?: string
 }
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
@@ -143,52 +141,13 @@ async function forward(
         body: JSON.stringify(body),
       }).then((r) => r.ok),
     ),
-    emailAlex(env, payload),
   ]
   const results = await Promise.allSettled(sends)
   const okAt = results.map((r) => r.status === 'fulfilled' && r.value === true)
-  // Which destinations took it (GHL hooks in order, then email), for debugging.
-  const delivered = { crm: okAt.slice(0, -1).filter(Boolean).length, email: okAt[okAt.length - 1] }
+  // How many GHL webhooks took it, for debugging.
+  const delivered = { crm: okAt.filter(Boolean).length }
   // The lead is safe as long as one destination took it.
   if (okAt.some(Boolean)) return json({ ok: true, delivered })
   return json({ ok: false, error: 'Could not deliver the submission', delivered }, 502)
 }
 
-
-// Plain table email to Alex for every submission, with reply-to set to the lead.
-async function emailAlex(env: Env, payload: Record<string, unknown>): Promise<boolean> {
-  const cf = (payload.customField || {}) as Record<string, string>
-  const name = (payload.firstName as string) || '(no name)'
-  const source = (payload.source as string) || 'Website form'
-  const fields: Record<string, string> = {
-    _subject: `New website lead: ${name} (${source})`,
-    _template: 'table',
-    _captcha: 'false',
-    _replyto: payload.email as string,
-    Form: source,
-    Name: name,
-    Email: payload.email as string,
-    Company: (payload.companyName as string) || '',
-    Page: cf.lead_source_detail || '',
-    Download: (payload.magnet as string) || '',
-    Details: (payload.message as string) || '',
-    Tags: ((payload.tags as string[]) || []).join(', '),
-  }
-  for (const k of Object.keys(fields)) if (!fields[k]) delete fields[k]
-  try {
-    const res = await fetch(`https://formsubmit.co/ajax/${env.NOTIFY_EMAIL || NOTIFY_FALLBACK}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Referer: 'https://elevatexsolutions.co.uk/',
-        Origin: 'https://elevatexsolutions.co.uk',
-      },
-      body: JSON.stringify(fields),
-    })
-    const out = (await res.json().catch(() => ({}))) as { success?: string | boolean }
-    return res.ok && String(out.success) === 'true'
-  } catch {
-    return false
-  }
-}

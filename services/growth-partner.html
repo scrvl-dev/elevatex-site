@@ -627,6 +627,7 @@ async function submitMagnet(slug) {
     }
   };
 
+  if (window.exNotify) exNotify({ form: 'Website PDF download', name: name, email: email, download: payload.magnet });
   // Sent through the site's own /api/enquiry so every form reaches GHL the same way.
   try {
     await fetch('/api/enquiry', {
@@ -652,6 +653,7 @@ async function submitMagnet(slug) {
 
 </script>
 
-<script src="/assets/chrome-20261027.js" defer></script>
+<script src="/assets/notify-20261101.js"></script>
+<script src="/assets/chrome-20261101.js" defer></script>
 </body>
 </html>

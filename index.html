@@ -253,6 +253,7 @@
 }
     </script>
 
+<script src="/assets/notify-20261101.js"></script>
 <script>
 /* One dark theme sitewide so the homepage and inner pages read as one site. */
 document.documentElement.setAttribute('data-theme','dark');
@@ -1053,6 +1054,7 @@ if(ef){const st=document.getElementById('ef-status'),btn=ef.querySelector('butto
     setTimeout(()=>{location.href='/thank-you?type=enquiry'},600)}
   ef.addEventListener('submit',async e=>{e.preventDefault();btn.disabled=true;btn.textContent='Sending…';st.textContent='';
     const p={'form-name':'enquiry'};new FormData(ef).forEach((v,k)=>p[k]=String(v));
+    window.exNotify&&exNotify({form:'Website enquiry form',name:p.name,email:p.email,company:p.company,details:p.message});
     try{const r=await fetch('/api/enquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)});
       if(r.ok)return done();
       if(r.status===404||r.status===405){const f=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:enc(p)});if(f.ok)return done()}
