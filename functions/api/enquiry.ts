@@ -11,7 +11,7 @@
  */
 
 const GHL_FALLBACK =
-  'https://services.leadconnectorhq.com/hooks/IyTdSIf5Wpb5miDIfc9E/webhook-trigger/f001a49a-14b3-43a8-b888-9efd1ad65df1'
+  'https://services.leadconnectorhq.com/hooks/qVufP0lhSYGIZE0j9nRm/webhook-trigger/5564b2a5-0839-44ec-b96d-5d8105eff695'
 
 interface Env {
   GHL_WEBHOOK_URL?: string
@@ -74,7 +74,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     return forward(env, json, {
       email,
       firstName: name || undefined,
-      source: 'ElevateX Industry Page - Lead Magnet',
+      source: 'Website PDF download',
       industry,
       magnet,
       tags: ['lead-magnet', 'website-lead', ...(industry ? [`industry-${industry}`] : [])],
@@ -89,7 +89,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     email,
     firstName: name,
     companyName: company || undefined,
-    source: 'ElevateX Website — Enquiry Form',
+    source: campaign === 'ads-relaunch' ? 'Ads relaunch application' : 'Website enquiry form',
     tags: ['website-enquiry', 'website-lead', ...(campaign ? [campaign] : [])],
     customField: {
       lead_source_detail: page
