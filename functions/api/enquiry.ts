@@ -59,8 +59,30 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     .map(([k, v]) => `${k}: ${String(v).trim().slice(0, 200)}`)
   const fullMessage = [...extras, message].filter(Boolean).join('\n')
 
-  if (!email.includes('@') || !name) {
+  // Lead magnet downloads (industry pages) only ask for an email; name is optional.
+  const isMagnet = data['form-name'] === 'lead-magnet'
+  const industry = /^[a-z0-9-]{1,80}$/.test((data.industry || '').trim()) ? data.industry.trim() : ''
+  const magnet = /^[a-z0-9-]{1,80}\.pdf$/.test((data.magnet || '').trim()) ? data.magnet.trim() : ''
+
+  if (!email.includes('@') || (!name && !isMagnet)) {
     return json({ ok: false, error: 'Name and a valid email are required' }, 400)
+  }
+
+  if (isMagnet) {
+    // Same payload shape the industry pages used to post to GHL directly,
+    // so existing GHL workflows keep working.
+    return forward(env, json, {
+      email,
+      firstName: name || undefined,
+      source: 'ElevateX Industry Page - Lead Magnet',
+      industry,
+      magnet,
+      tags: ['lead-magnet', 'website-lead', ...(industry ? [`industry-${industry}`] : [])],
+      customField: {
+        lead_source_detail: `Industry money page: ${industry || page}`,
+        magnet_downloaded: magnet,
+      },
+    })
   }
 
   const payload = {
@@ -79,11 +101,33 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     message: fullMessage,
   }
 
+  return forward(env, json, payload)
+}
+
+// Every form ends here. Set GHL_WEBHOOK_URL in the Cloudflare Pages project to
+// change which GHL location receives leads without touching code.
+async function forward(
+  env: Env,
+  json: (body: unknown, status?: number) => Response,
+  payload: Record<string, unknown>,
+) {
+  // GHL webhook workflows map fields by whatever key the builder picked, so send
+  // the common spellings too. Contacts were arriving with no name or company.
+  const first = payload.firstName as string | undefined
+  const company = payload.companyName as string | undefined
+  const body = {
+    ...payload,
+    first_name: first,
+    name: first,
+    full_name: first,
+    company_name: company,
+    company,
+  }
   try {
     const res = await fetch(env.GHL_WEBHOOK_URL || GHL_FALLBACK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(body),
     })
     if (!res.ok) return json({ ok: false, error: 'CRM rejected the submission' }, 502)
     return json({ ok: true })

@@ -589,8 +589,7 @@ document.querySelectorAll('[data-cta]').forEach(el => {
   });
 });
 
-// Lead magnet submission -> GHL webhook + Meta Lead event + dataLayer
-const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/IyTdSIf5Wpb5miDIfc9E/webhook-trigger/f001a49a-14b3-43a8-b888-9efd1ad65df1";
+// Lead magnet submission -> /api/enquiry (then GHL) + Meta Lead event + dataLayer
 
 async function submitMagnet(slug) {
   const emailEl = document.getElementById('email-' + slug);
@@ -617,13 +616,15 @@ async function submitMagnet(slug) {
     }
   };
 
+  // Sent through the site's own /api/enquiry so every form reaches GHL the same way.
   try {
-    await fetch(GHL_WEBHOOK_URL, {
+    await fetch('/api/enquiry', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({ 'form-name': 'lead-magnet', name: name, email: email,
+        industry: slug, magnet: payload.magnet, page: location.pathname })
     });
-  } catch (e) { console.log('Webhook queued'); }
+  } catch (e) { console.log('Enquiry queued'); }
 
   if (window.dataLayer) {
     window.dataLayer.push({ event: 'magnet_download', magnet_id: slug, magnet_filename: 'social-housing-marketing-playbook.pdf' });
