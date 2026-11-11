@@ -1,7 +1,11 @@
+# Pre-call custom growth audit. The booking confirmation email links to
+# /qualify.html. /qualify is the same page. Do not send either to the homepage.
+/qualify            /qualify.html   200
+/qualify/           /qualify.html   200
+
 # Retired pages from the pre-2026 site — 301 so no inbound link or indexed URL 404s.
 /services.html      /#menu    301
 /services2.html     /#menu    301
-/qualify.html       /         301
 /welcome.html       /         301
 /SETUP-GUIDE.html   /         301
 
