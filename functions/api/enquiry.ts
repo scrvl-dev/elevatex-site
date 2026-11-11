@@ -12,7 +12,7 @@
  * Set GHL_WEBHOOK_URL (comma separated for several) as an environment variable
  * in the Cloudflare Pages project to override the webhooks below.
  *
- * The pre-call growth audit (/qualify) uses this same endpoint. There is no
+ * The pre-call growth audit (/growth-audit) uses this same endpoint. There is no
  * separate GoHighLevel inbound webhook for it in this repo. Audit submissions
  * are tagged growth-audit so they can be filtered from ordinary enquiries.
  */
@@ -124,7 +124,7 @@ function clip(value: unknown, max: number) {
   return String(value ?? '').trim().slice(0, max)
 }
 
-// Booked callers complete /qualify before the strategy call. Same GHL
+// Booked callers complete /growth-audit before the strategy call. Same GHL
 // destinations as every other form. The readable message is what Alex sees
 // if the workflow has not mapped each custom field.
 function submitGrowthAudit(

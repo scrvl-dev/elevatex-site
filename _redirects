@@ -1,6 +1,9 @@
-# /qualify.html is the pre-call growth audit again. Do not 301 it home.
-# Pages pretty URLs already serve that file at /qualify and 308
-# /qualify.html to /qualify. A rewrite here back to the .html file loops.
+# The booking email still links to /qualify.html. The audit lives at
+# /growth-audit (growth-audit.html via Pages pretty URLs). Do not rewrite
+# /growth-audit back to the .html file: that loops.
+/qualify.html       /growth-audit   301
+/qualify            /growth-audit   301
+/qualify/           /growth-audit   301
 
 # Retired pages from the pre-2026 site — 301 so no inbound link or indexed URL 404s.
 /services.html      /#menu    301
