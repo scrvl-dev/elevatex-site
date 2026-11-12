@@ -12,9 +12,10 @@
  * Set GHL_WEBHOOK_URL (comma separated for several) as an environment variable
  * in the Cloudflare Pages project to override the webhooks below.
  *
- * The pre-call growth audit (/growth-audit) uses this same endpoint. There is no
- * separate GoHighLevel inbound webhook for it in this repo. Audit submissions
- * are tagged growth-audit so they can be filtered from ordinary enquiries.
+ * The pre-call growth audit (/growth-audit) uses this same endpoint. Audit
+ * submissions are tagged growth-audit and also go to their own GoHighLevel
+ * inbound webhook in the ElevateX location (GROWTH_AUDIT_WEBHOOK below, or the
+ * GHL_GROWTH_AUDIT_WEBHOOK_URL environment variable to override it).
  */
 
 // The older GHL account that has always received website leads, plus the new
@@ -24,8 +25,13 @@ const GHL_FALLBACK = [
   'https://services.leadconnectorhq.com/hooks/qVufP0lhSYGIZE0j9nRm/webhook-trigger/5564b2a5-0839-44ec-b96d-5d8105eff695',
 ]
 
+// Growth audit workflow in the ElevateX GHL location (d3fMlmjwHd9WhsME417w), added 12 Nov 2026.
+const GROWTH_AUDIT_WEBHOOK =
+  'https://services.leadconnectorhq.com/hooks/d3fMlmjwHd9WhsME417w/webhook-trigger/ab465ddf-6366-4b72-a9ee-a739e6185cb1'
+
 interface Env {
   GHL_WEBHOOK_URL?: string
+  GHL_GROWTH_AUDIT_WEBHOOK_URL?: string
 }
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
@@ -170,6 +176,7 @@ function submitGrowthAudit(
     'Consent: yes',
   ].join('\n')
 
+  const auditHook = (env.GHL_GROWTH_AUDIT_WEBHOOK_URL || GROWTH_AUDIT_WEBHOOK).trim()
   return forward(env, json, {
     email,
     firstName: name.slice(0, 120),
@@ -198,7 +205,7 @@ function submitGrowthAudit(
       what_they_sell: sells,
     },
     message: fullMessage,
-  })
+  }, auditHook && auditHook !== 'off' ? [auditHook] : [])
 }
 
 // Every form ends here. Set GHL_WEBHOOK_URL in the Cloudflare Pages project to
@@ -207,6 +214,7 @@ async function forward(
   env: Env,
   json: (body: unknown, status?: number) => Response,
   payload: Record<string, unknown>,
+  extraTargets: string[] = [],
 ) {
   // GHL webhook workflows map fields by whatever key the builder picked, so send
   // the common spellings too. Contacts were arriving with no name or company.
@@ -222,9 +230,10 @@ async function forward(
     company,
     ...(phone ? { phone, phone_number: phone } : {}),
   }
-  const targets = env.GHL_WEBHOOK_URL
+  const base = env.GHL_WEBHOOK_URL
     ? env.GHL_WEBHOOK_URL.split(',').map((u) => u.trim()).filter(Boolean)
     : GHL_FALLBACK
+  const targets = [...new Set([...base, ...extraTargets])]
   const sends = [
     ...targets.map((url) =>
       fetch(url, {
