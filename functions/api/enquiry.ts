@@ -15,7 +15,10 @@
  * The pre-call growth audit (/growth-audit) uses this same endpoint. Audit
  * submissions are tagged growth-audit and also go to their own GoHighLevel
  * inbound webhook in the ElevateX location (GROWTH_AUDIT_WEBHOOK below, or the
- * GHL_GROWTH_AUDIT_WEBHOOK_URL environment variable to override it).
+ * GHL_GROWTH_AUDIT_WEBHOOK_URL environment variable to override it). They are
+ * also forwarded to the EX 16 n8n workflow (N8N_GROWTH_AUDIT_FALLBACK below, or
+ * the N8N_GROWTH_AUDIT_WEBHOOK environment variable). That workflow is inactive
+ * until it is published, so a failed n8n post must not fail the submission.
  */
 
 // The older GHL account that has always received website leads, plus the new
@@ -29,9 +32,15 @@ const GHL_FALLBACK = [
 const GROWTH_AUDIT_WEBHOOK =
   'https://services.leadconnectorhq.com/hooks/d3fMlmjwHd9WhsME417w/webhook-trigger/ab465ddf-6366-4b72-a9ee-a739e6185cb1'
 
+// EX 16 Growth audit on n8n. The webhook does not accept traffic until the
+// workflow is published. The site still succeeds when only GoHighLevel answers.
+const N8N_GROWTH_AUDIT_FALLBACK =
+  'https://elevatex-solutions.app.n8n.cloud/webhook/ex/inbound/growth-audit/Acg5jbkaFXE813CtYvcqcZ79'
+
 interface Env {
   GHL_WEBHOOK_URL?: string
   GHL_GROWTH_AUDIT_WEBHOOK_URL?: string
+  N8N_GROWTH_AUDIT_WEBHOOK?: string
 }
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
@@ -177,20 +186,34 @@ function submitGrowthAudit(
   ].join('\n')
 
   const auditHook = (env.GHL_GROWTH_AUDIT_WEBHOOK_URL || GROWTH_AUDIT_WEBHOOK).trim()
+  const n8nHook = (env.N8N_GROWTH_AUDIT_WEBHOOK || N8N_GROWTH_AUDIT_FALLBACK).trim()
+  // Include the original form field names as well as the GHL spellings, so EX 16
+  // and a GHL mapper can both read every answer, including the consent checkbox.
+  // `note` / `notes` / contact.notes are the usual keys for a contact note.
   return forward(env, json, {
     email,
     firstName: name.slice(0, 120),
+    name: name.slice(0, 120),
     phone,
     companyName: company,
     website,
     source: 'Custom growth audit',
     tags: ['growth-audit', 'pre-call', 'website-lead'],
+    'form-name': 'growth-audit',
+    Page: page || '/growth-audit',
+    page: page || '/growth-audit',
+    sells,
+    revenue,
+    constraint,
+    consent: 'yes',
     offer_price: offer,
     monthly_revenue: revenue,
     ad_budget: budget,
     lead_source: leads,
     what_they_sell: sells,
     biggest_constraint: constraint,
+    note: fullMessage,
+    notes: fullMessage,
     customField: {
       lead_source_detail: page ? `Growth audit on ${page}` : 'Custom growth audit',
       enquiry_message: fullMessage,
@@ -203,9 +226,12 @@ function submitGrowthAudit(
       ad_budget: budget,
       biggest_constraint: constraint,
       what_they_sell: sells,
+      consent: 'yes',
+      notes: fullMessage,
+      'contact.notes': fullMessage,
     },
     message: fullMessage,
-  }, auditHook && auditHook !== 'off' ? [auditHook] : [])
+  }, auditHook && auditHook !== 'off' ? [auditHook] : [], n8nHook && n8nHook !== 'off' ? [n8nHook] : [])
 }
 
 // Every form ends here. Set GHL_WEBHOOK_URL in the Cloudflare Pages project to
@@ -215,6 +241,7 @@ async function forward(
   json: (body: unknown, status?: number) => Response,
   payload: Record<string, unknown>,
   extraTargets: string[] = [],
+  sideChannels: string[] = [],
 ) {
   // GHL webhook workflows map fields by whatever key the builder picked, so send
   // the common spellings too. Contacts were arriving with no name or company.
@@ -234,21 +261,25 @@ async function forward(
     ? env.GHL_WEBHOOK_URL.split(',').map((u) => u.trim()).filter(Boolean)
     : GHL_FALLBACK
   const targets = [...new Set([...base, ...extraTargets])]
-  const sends = [
-    ...targets.map((url) =>
-      fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      }).then((r) => r.ok),
-    ),
-  ]
-  const results = await Promise.allSettled(sends)
-  const okAt = results.map((r) => r.status === 'fulfilled' && r.value === true)
-  // How many GHL webhooks took it, for debugging.
-  const delivered = { crm: okAt.filter(Boolean).length }
-  // The lead is safe as long as one destination took it.
-  if (okAt.some(Boolean)) return json({ ok: true, delivered })
+  const post = (url: string) =>
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    }).then((r) => r.ok)
+  const ghlSends = targets.map(post)
+  const sideSends = sideChannels.map(post)
+  const results = await Promise.allSettled([...ghlSends, ...sideSends])
+  const ok = (r: PromiseSettledResult<boolean>) => r.status === 'fulfilled' && r.value === true
+  const ghlOk = results.slice(0, ghlSends.length).map(ok)
+  const sideOk = results.slice(ghlSends.length).map(ok)
+  // How many GHL webhooks and n8n side channels took it, for debugging.
+  const delivered: { crm: number; n8n?: number } = { crm: ghlOk.filter(Boolean).length }
+  if (sideChannels.length) delivered.n8n = sideOk.filter(Boolean).length
+  // The lead is safe as long as one GoHighLevel destination took it. n8n is
+  // optional until EX 16 is published, so a missed side channel is not a 502.
+  if (ghlOk.some(Boolean)) return json({ ok: true, delivered })
+  if (sideOk.some(Boolean)) return json({ ok: true, delivered })
   return json({ ok: false, error: 'Could not deliver the submission', delivered }, 502)
 }
 
