@@ -16,6 +16,12 @@
   Cache-Control: public, max-age=604800
   Access-Control-Allow-Origin: *
 
+# Thank-you VSL. Filename is dated, but this folder must not be immutable:
+# /assets/* is cached forever, so media lives here and can be replaced.
+/media/*
+  Cache-Control: public, max-age=604800
+  Access-Control-Allow-Origin: *
+
 # Always revalidate HTML so deploys go live immediately
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
